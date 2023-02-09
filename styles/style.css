@@ -1,1 +1,26 @@
 
+/*
+* --------------------------------------------
+* These are some styles that I am customizing 
+* to over-ride the default bootstrap ones
+*---------------------------------------------
+*/
+.bg-info {
+    background-color: #23879e !important;     /* some secondary colour */
+}
+
+.navbar-light .navbar-brand {
+    color: #f1f2f2;                           /* contrast to secondary colour */
+}
+
+.btn-primary {
+    color: black;                           /* contrast to secondary colour */
+    font-size: 150%;
+    background-color: #79BD49;                /* some secondary colour */
+    border-color: #79BD49;                    /* some accent colour */
+    border-width: none
+}
+
+body {
+    background-color: #f1f2f2;                /* some primary colour */
+}
