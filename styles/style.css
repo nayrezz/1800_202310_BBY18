@@ -5,6 +5,9 @@
 * to over-ride the default bootstrap ones
 *---------------------------------------------
 */
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+
+
 .bg-info {
     background-color: #23879e !important;     /* some secondary colour */
 }
@@ -23,4 +26,12 @@
 
 body {
     background-color: #f1f2f2;                /* some primary colour */
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cabin', sans-serif;
+
 }
