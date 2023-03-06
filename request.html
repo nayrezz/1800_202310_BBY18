@@ -67,11 +67,13 @@
       <br/>
       <div id="accordion">
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" data-toggle="collapse" data-target="#Urgencyalert" aria-expanded="true" aria-controls="Urgencyalert">
+          <input class="form-check-input collapsed" type="checkbox" id="flexSwitchCheckDefault" data-toggle="collapse" data-target="#Urgencyalert" aria-expanded="true" aria-controls="Urgencyalert" role="button">
           <label class="form-check-label" for="flexSwitchCheckDefault">URGENT</label>
         </div>
-        <div class="alert alert-warning collapse show" role="alert" id="Urgencyalert" data-parent="#accordion">
-          Urgent requests are highlighted in the Requests Page and then deleted after 12 hours.
+        <div class="collapse show" id="Urgencyalert">
+          <div class="alert alert-warning" role="alert">
+            Urgent requests are highlighted in the Requests Page and then deleted after 12 hours.
+          </div>
         </div>
       </div>
       <br/>
