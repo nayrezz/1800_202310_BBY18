@@ -45,6 +45,30 @@
           <div class="title">
             <p class="h3">Requests</p>
           </div>
+          <div class="container">
+            <div id="requests-go-here" class="row row-cols-auto">
+            </div>
+          </div>
+
+              <!-- Templates for general use, not displayed -->
+      <template id="requestCardTemplate">
+        <div class="card-header" id="urgent">
+          Urgent
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Shovel snow off driveway</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Paid - C$20</h6>
+          <p class="card-text community">Brentwood</p>
+          <p class="card-text">I would like someone to shovel the snow off my driveway by nightfall</p>
+          <a href="#" class="btn btn-primary">See full Request</a>
+        </div>
+        <div class="card-footer text-muted">
+          3 hours ago
+        </div>
+    </template>
+
+
+
 
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
@@ -113,6 +137,7 @@
       <script src="./scripts/firebaseAPI_BlockBuddy.js"></script>
       <script src="./scripts/authentication.js"></script>
       <script src="./scripts/skeleton.js"></script>
+      <script src="/scripts/browseRequest.js"></script>
 
 
     </body>

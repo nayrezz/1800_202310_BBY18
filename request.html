@@ -53,21 +53,21 @@
         <p class="h3">New request</p>
       </div>
 
-      <input class="form-control" type="text" placeholder="Subject" aria-label="default input example">
+      <input class="form-control" id="subject" type="text" placeholder="Subject" aria-label="default input example">
       <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label"></label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description"></textarea>
+        <label for="description" class="form-label"></label>
+        <textarea class="form-control" id="description" rows="3" placeholder="Description"></textarea>
       </div>
       <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-        <label class="form-check-label" for="flexSwitchCheckDefault">Paid</label>
+        <input class="form-check-input" type="checkbox" id="paid">
+        <label class="form-check-label" for="paid">Paid</label>
       </div>
       <br/>
-        <input class="form-control form-control-sm" type="text" placeholder="Amount" aria-label=".form-control-sm example">
+        <input class="form-control form-control-sm" type="text" placeholder="Amount" aria-label=".form-control-sm example" id="amount">
       <br/>
       <div id="accordion">
         <div class="form-check form-switch">
-          <input class="form-check-input collapsed" type="checkbox" id="flexSwitchCheckDefault" data-toggle="collapse" data-target="#Urgencyalert" aria-expanded="true" aria-controls="Urgencyalert" role="button">
+          <input class="form-check-input collapsed" type="checkbox" id="urgentCheck" data-toggle="collapse" data-target="#Urgencyalert" aria-expanded="true" aria-controls="Urgencyalert" role="button">
           <label class="form-check-label" for="flexSwitchCheckDefault">URGENT</label>
         </div>
         <div class="collapse show" id="Urgencyalert">
@@ -78,7 +78,7 @@
       </div>
       <br/>
       <label for="exampleDataList" class="form-label">Location</label>
-      <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search location">
+      <input class="form-control" list="datalistOptions" id="location" placeholder="Type to search location">
       <datalist id="datalistOptions">
         <option value="Default">
         <option value="Location1">
@@ -95,7 +95,7 @@
 
 
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Post Request</button>
+        <button type="button" href="/browseRequest.html" class="btn btn-primary btn-lg px-4 gap-3" onclick="savePost()">Post Request</button>
       </div>
 
       <footer id="footerPlaceholder"></footer>
@@ -111,6 +111,7 @@
     <script src="./scripts/firebaseAPI_BlockBuddy.js"></script>
     <script src="./scripts/authentication.js"></script>
     <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/request.js"></script>
     <!-- <script src="./scripts/script.js"></script> -->
 
 </body>
