@@ -16,12 +16,22 @@ function displayCardsDynamically(collection) {
                 var location = doc.data().location; //gets the length field
                 let newcard = cardTemplate.content.cloneNode(true);
 
+                
                 //update title and text and image
-                newcard.querySelector('.card-header').innerHTML = urgent;
-                newcard.querySelector('.card-title').innerHTML = title;
-                newcard.querySelector('.card-subtitle').innerHTML = paid +"-" + amount;
+                if (urgent){
+                    newcard.querySelector('.urgent-title').innerHTML = "Urgent";
+                }
+                
+                newcard.querySelector('.subject').innerHTML = title;
+
+                if(paid) {
+                    newcard.querySelector('.value').innerHTML = amount;
+                } else{
+                    newcard.querySelector('.value').innerHTML = "Free";
+                }
+                
                 newcard.querySelector('.community').innerHTML = location;
-                newcard.querySelector('.card-text').innerHTML = details;
+                newcard.querySelector('.desc').innerHTML = details;
 
                 //Optional: give unique ids to all elements for future use
                 // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
