@@ -7,6 +7,10 @@
 */
 @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
 
+.responsive {
+    width: 100%;
+    height: auto;
+  }
 
 .bg-info {
     background-color: #23879e !important;     /* some secondary colour */
@@ -38,4 +42,18 @@ body {
 
 #urgent {
     background-color: #db4744;
+}
+
+
+
+#display-welcome{
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
+
+#welcome{
+    position: relative;
+    text-align: center;
+    color: white;
 }
