@@ -46,14 +46,22 @@ body {
 
 
 
-#display-welcome{
+#display-welcome h1 {
     position: absolute;
-    top: 8px;
-    left: 16px;
+    top: 30%;
+    color: white;
+    background-color: #23879e;
+
+    
 }
 
-#welcome{
+#welcome {
     position: relative;
     text-align: center;
     color: white;
+}
+
+#welcome-img {
+    border-radius: 20px;
+    width: 100%;
 }
