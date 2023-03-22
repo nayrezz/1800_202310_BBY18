@@ -20,7 +20,7 @@ function displayCardsDynamically(collection) {
                 //update title and text and image
                 if (urgent){
                     newcard.querySelector('.urgent-title').innerHTML = "Urgent";
-                }
+                } 
                 
                 newcard.querySelector('.subject').innerHTML = title;
 
