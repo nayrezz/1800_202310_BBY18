@@ -32,6 +32,34 @@ body {
     background-color: #f1f2f2;                /* some primary colour */
 }
 
+.about-us p {
+    margin-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px
+}
+
+.about-us h2 {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.about-us ul {
+    font-weight: bold;
+}
+
+.list-container {
+    display: flex;
+}
+
+.list-container ul {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.text-container {
+    flex: 1;
+}
+
 .title {
     display: flex;
     align-items: center;
