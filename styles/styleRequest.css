@@ -306,3 +306,7 @@ footer {
   height: 80px;
   color: #fff;
 }
+
+#urgent-display {
+  display: none;
+}

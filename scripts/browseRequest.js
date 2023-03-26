@@ -18,8 +18,9 @@ function displayCardsDynamically(collection) {
 
                 
                 //update title and text and image
-                if (urgent){
+                if(urgent){
                     newcard.querySelector('.urgent-title').innerHTML = "Urgent";
+                    newcard.querySelector('#urgent-display').style.display = "block"
                 } 
                 
                 newcard.querySelector('.subject').innerHTML = title;
