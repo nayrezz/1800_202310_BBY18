@@ -310,3 +310,11 @@ footer {
 #urgent-display {
   display: none;
 }
+
+#delete-request {
+  background-color: #fff;
+  border: #ddd;
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 10px;
+}

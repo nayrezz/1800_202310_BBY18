@@ -37,45 +37,94 @@
 
     <!-- Link to styles of your own -->
     <!-- <link rel="stylesheet" href="./styles/style.css"> -->
-    <link type="text/css" rel="stylesheet" href="./styles/style.css" />
+    <link type="text/css" rel="stylesheet" href="./styles/styleRequest.css" />
   </head>
   <body>
     <nav id="navbarPlaceholder"></nav>
 
     <!-- content goes here  -->
     <div class="title">
-      <p class="h3">Requests</p>
+      <p class="h3">My Requests</p>
     </div>
     <div class="container">
-      <div id="requests-go-here" class="row row-cols-auto">
-        
-      </div>
+      <div id="requests-go-here" class="row row-cols-auto"></div>
     </div>
 
-        <!-- Templates for general use, not displayed -->
+    <!-- Templates for general use, not displayed -->
 
-
-
-    <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
+    <div
+      class="container-fluid bg-trasparent my-4 p-3"
+      style="position: relative"
+    >
       <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-          <template id="requestCardTemplate">
-            <div class="col">
-              <div class="card h-100 shadow-sm">
-                <div class="subject text-center my-4 card-title"></div>
-                <div class="urgent-title label-top shadow-sm">Asus Rog</div>
-                <div class="card-body">
-                  <div class="clearfix mb-3">
-                    <span class="community float-start badge rounded-pill bg-primary">ASUS Rog</span>
-                    <span class="value float-end price-hp">12354.00&euro;</span>
-                  </div>
-                  <h5 class="desc card-text text-wrap">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.</h5>
-                  <div class="text-center my-4">
-                    <a href="#" class="btn btn-warning">Reply</a>
-                  </div>
+        <template id="requestCardTemplate">
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <div onclick="deleteRequest()">
+              <button id="delete-request">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-trash"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                  />
+                </svg>
+              </button>
+            </div>
+              <div class="subject text-center my-4 card-title"></div>
+              <div id="urgent-display" class="urgent-title label-top shadow-sm">
+                Asus Rog
+              </div>
+              <div class="card-body">
+                <div class="clearfix mb-3">
+                  <span
+                    class="community float-start badge rounded-pill bg-primary"
+                    >ASUS Rog</span
+                  >
+                  <span class="value float-end price-hp">12354.00&euro;</span>
+                </div>
+                <h5 class="desc card-text text-wrap">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Veniam quidem eaque ut eveniet aut quis rerum. Asperiores
+                  accusamus harum ducimus velit odit ut. Saepe, iste optio
+                  laudantium sed aliquam sequi.
+                </h5>
+                <!-- <div class="text-center my-4">
+                  <a href="#" class="btn btn-warning">Reply</a>
+                  
+                  <div class="card-header bg-transparent border-bottom-0"></div> -->
+                  <!-- <button id="delete-request">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-trash"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                      />
+                    </svg>
+                  </button> -->
                 </div>
               </div>
             </div>
-          </template>
+          </div>
+        </template>
       </div>
     </div>
 
