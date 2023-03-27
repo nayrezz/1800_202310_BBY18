@@ -44,10 +44,49 @@
 
     <!-- content goes here  -->
 
+    <div class="container">
+      <br>
+      <div class="container">
+        <h1><span id="requestName"> Request subject</span></h1>
+        <br/>
+        <h3><span class="badge bg-secondary" id="urgent" style="display:none">URGENT!</span></h3>
+        <h3><span class="badge bg-secondary" id="paid" style="display: none ">Paid</span></h3>
+        <div id="location"> Location </div>
+        <div id="description"> Description </div>
+      </div>
+      <br/>
+      <form>
+        <div class="form-group">
+          <h3>Reply to this request:</h3>
+          <label for="exampleFormControlInput1">Are you responding to this request or asking for clarification?</label> 
+          <br/>   
+          <br/>    
+          <div class="btn-group">
+            <input type="radio" class="btn-check" name="Res-cla" id="option1" autocomplete="off" value="respond" checked />
+            <label class="btn btn-secondary" for="option1">Respond</label>
+          
+            <input type="radio" class="btn-check" name="Res-cla" id="option2" value="clarify" autocomplete="off" />
+            <label class="btn btn-secondary" for="option2">Clarify</label>
+          </div>
+        </div>
+        <br/>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Details:</label>
+          <textarea class="form-control" id="details" rows="3"></textarea>
+        </div>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button type="button" class="btn btn-primary btn-lg px-4 gap-3" onclick="writeReply()">Reply</button>
+        </div>
+      </form>
+      <br>
+    </div>
+
+
+
     <footer id="footerPlaceholder"></footer>
     <!--Scripts here-->
     <script src="./scripts/firebaseAPI_BlockBuddy.js"></script>
-    <!-- <script src="./scripts/authentication.js"></script> -->
+    <script src="./scripts/reply.js"></script>
     <script src="./scripts/skeleton.js"></script>
   </body>
 </html>

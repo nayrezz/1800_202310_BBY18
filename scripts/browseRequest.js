@@ -4,7 +4,7 @@
 function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("requestCardTemplate");
 
-    db.collection(collection).get()   //the collection called "hikes"
+    db.collection(collection).get()   //the collection called "requests"
         .then(allRequests=> {
             //var i = 1;  //Optional: if you want to have a unique ID for each hike
             allRequests.forEach(doc => { //iterate thru each doc
@@ -34,6 +34,12 @@ function displayCardsDynamically(collection) {
                 newcard.querySelector('.community').innerHTML = location;
                 newcard.querySelector('.desc').innerHTML = details;
 
+                newcard.querySelector('.btn').addEventListener('click', function() {
+                    var ID = doc.id;
+                    localStorage.setItem('requestDocID', ID);
+                    window.location.href = 'reply.html';
+                });
+
                 //Optional: give unique ids to all elements for future use
                 // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
                 // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
@@ -48,3 +54,8 @@ function displayCardsDynamically(collection) {
 }
 
 displayCardsDynamically("requests");  //input param is the name of the collection
+
+function saveRequestDocumentIDAndRedirect(ID){
+    localStorage.setItem('requestDocID', ID);
+    window.location.href = 'reply.html';
+}
