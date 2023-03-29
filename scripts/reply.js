@@ -53,10 +53,12 @@ function populateReplies() {
               var respond = doc.data().respond; 
               var details = doc.data().details; 
               var time = doc.data().timestamp.toDate();
+              const displayname = doc.data().displayname; 
               console.log(time)
 
               let replyCard = replyTemplate.content.cloneNode(true);
               replyCard.querySelector('#type').innerHTML = respond;     //equiv getElementByClassName
+              replyCard.querySelector('#user').innerHTML = displayname;     //equiv getElementByClassName
               replyCard.querySelector('#time').innerHTML = new Date(time).toLocaleString();    //equiv getElementByClassName
               replyCard.querySelector('#reply-detail').innerHTML = details;
               repliesGroup.appendChild(replyCard);
@@ -80,6 +82,7 @@ function writeReply() {
       if (user) {
           var currentUser = db.collection("users").doc(user.uid)
           var userID = user.uid;
+          const displayname = user.displayname;
           //get the document for current user.
           currentUser.get()
               .then(userDoc => {
@@ -88,6 +91,7 @@ function writeReply() {
                       requestDocID: requestDocID,
                       respond: Respond,
                       userID: userID,
+                      displayname: user.displayName,
                       details: details,
                       timestamp: firebase.firestore.FieldValue.serverTimestamp()
                   }).then(() => {

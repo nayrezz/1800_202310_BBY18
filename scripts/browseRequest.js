@@ -14,6 +14,7 @@ function displayCardsDynamically(collection) {
                 var amount = doc.data().amount;
                 var urgent = doc.data().urgent;
                 var location = doc.data().location; //gets the length field
+                const displayname = doc.data().displayname;
                 let newcard = cardTemplate.content.cloneNode(true);
 
                 
@@ -32,6 +33,7 @@ function displayCardsDynamically(collection) {
                 }
                 
                 newcard.querySelector('.community').innerHTML = location;
+                newcard.querySelector('.user').innerHTML = displayname;
                 newcard.querySelector('.desc').innerHTML = details;
 
                 newcard.querySelector('.btn').addEventListener('click', function() {

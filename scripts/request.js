@@ -12,6 +12,7 @@ function savePost() {
             var loc = document.getElementById("location").value;
             db.collection("requests").add({
                 owner: user.uid,
+                displayname: user.displayName,
                 description: desc,
                 subject: sub,
                 paid: isPaid,
@@ -24,6 +25,7 @@ function savePost() {
                 console.log("Post document added!");
                 console.log(doc.id);
                 saveNewPostID(user.uid, doc.id);
+                window.location.href = "reply.html";
             })
         } else {
             // No user is signed in.
