@@ -116,14 +116,14 @@ function deleteRequest(requestid) {
 }
 
 
-function deleteFromRequests(requestid) {
-    firebase.auth().onAuthStateChanged(user => {
-            })
-            .then(() => {
-                console.log("2. post deleted from user doc");
-                deleteFromStorage(requestid);
-            })
-        }
+// function deleteFromRequests(requestid) {
+//     firebase.auth().onAuthStateChanged(user => {
+//             })
+//             .then(() => {
+//                 console.log("2. post deleted from user doc");
+//                 deleteFromStorage(requestid);
+//             })
+//         }
 
 
 
