@@ -37,6 +37,41 @@ function getRequestDetails(id) {
 
 getRequestDetails(requestDocID);
 
+function populateReplies() {
+  let replyTemplate = document.getElementById("replyTemplate");
+  let repliesGroup = document.getElementById("replies-go-here");
+
+  //let params = new URL(window.location.href) //get the url from the searbar
+  //let hikeID = params.searchParams.get("docID");
+  var requestID = localStorage.getItem("requestDocID");
+  
+  db.collection("replies").where( "requestDocID", "==", requestID).get()
+      .then(allReplies => {
+          replies=allReplies.docs;
+          console.log(replies);
+          replies.forEach(doc => {
+              var respond = doc.data().respond; 
+              var details = doc.data().details; 
+              var time = doc.data().timestamp.toDate();
+              const displayname = doc.data().displayname; 
+              console.log(time)
+
+              let replyCard = replyTemplate.content.cloneNode(true);
+              replyCard.querySelector('#type').innerHTML = respond;     //equiv getElementByClassName
+              replyCard.querySelector('#user').innerHTML = displayname;     //equiv getElementByClassName
+              replyCard.querySelector('#time').innerHTML = new Date(time).toLocaleString();    //equiv getElementByClassName
+              replyCard.querySelector('#reply-detail').innerHTML = details;
+              repliesGroup.appendChild(replyCard);
+          })
+      })
+}
+populateReplies();
+
+
+
+
+
+
 function writeReply() {
   console.log("inside reply")
   let Respond = document.querySelector('input[name="Res-cla"]:checked').value;
@@ -47,6 +82,7 @@ function writeReply() {
       if (user) {
           var currentUser = db.collection("users").doc(user.uid)
           var userID = user.uid;
+          const displayname = user.displayname;
           //get the document for current user.
           currentUser.get()
               .then(userDoc => {
@@ -55,6 +91,7 @@ function writeReply() {
                       requestDocID: requestDocID,
                       respond: Respond,
                       userID: userID,
+                      displayname: user.displayName,
                       details: details,
                       timestamp: firebase.firestore.FieldValue.serverTimestamp()
                   }).then(() => {

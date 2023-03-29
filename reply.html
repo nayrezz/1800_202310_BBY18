@@ -54,8 +54,25 @@
         <h3><span class="badge bg-secondary" id="paid" style="display: none ">Paid</span></h3>
         <div id="location"> Location </div>
         <div id="description"> Description </div>
+      
+        <br/>
+
+        <div id="replies-go-here" class="row row-cols-auto">
+              
+        </div>
+
+        <template id="replyTemplate">
+          <h3 id="type"> reply type goes here</h3>
+          <br/>
+          <span id="user">User Name: </span><div id="reply-detail">Details go here</div>
+          <br/>
+          <div id="time">timestamp</div>
+        </template>
+
       </div>
-      <br/>
+
+
+
       <form>
         <div class="form-group">
           <h3>Reply to this request:</h3>
