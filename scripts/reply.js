@@ -53,13 +53,23 @@ function populateReplies() {
               var respond = doc.data().respond; 
               var details = doc.data().details; 
               var time = doc.data().timestamp.toDate();
+              var now = new Date();
+              var diff = now - doc.data().timestamp.toDate();
+              var hours = Math.floor(diff / (1000 * 60 * 60));
+              var days = Math.floor(hours / 24);
               const displayname = doc.data().displayname; 
               console.log(time)
 
               let replyCard = replyTemplate.content.cloneNode(true);
               replyCard.querySelector('#type').innerHTML = respond;     //equiv getElementByClassName
               replyCard.querySelector('#user').innerHTML = displayname;     //equiv getElementByClassName
-              replyCard.querySelector('#time').innerHTML = new Date(time).toLocaleString();    //equiv getElementByClassName
+              if (days > 0) {
+                // If the reply was posted more than 24 hours ago, display the number of days
+                replyCard.querySelector('#time').innerHTML = ' - ' + days + ' day' + (days > 1 ? 's' : '') + ' ago';
+              } else {
+                // Otherwise, display the number of hours
+                replyCard.querySelector('#time').innerHTML = ' - ' + hours + ' hour' + (hours > 1 ? 's' : '') + ' ago';
+              }  
               replyCard.querySelector('#reply-detail').innerHTML = details;
               repliesGroup.appendChild(replyCard);
           })

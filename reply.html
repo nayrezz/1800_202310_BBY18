@@ -56,21 +56,45 @@
       
         <br/>
 
-        <div id="replies-go-here" class="row row-cols-auto">
+        <!-- <div id="replies-go-here" class="row row-cols-auto">
               
-        </div>
+        </div> -->
 
-        <template id="replyTemplate">
-          <h3 id="type"> reply type goes here</h3>
-          <br/>
-          <span id="user">User Name: </span><div id="reply-detail">Details go here</div>
-          <br/>
-          <div id="time">timestamp</div>
-        </template>
+        <!--replies section-->
+
+        
+                      <div id="replies-go-here" class="row row-cols-auto">
+              
+                      </div>
+                      <template id="replyTemplate">
+                        <div class="mediacom">
+                          <div class="media-body">
+                            <div class="row">
+                              <div class="col-8 d-flex d-flex align-items-center">
+                                <img class="mr-3 rounded-circle" alt="Bootstrap Media Preview" src="/images/icons8-user-100.png" />
+                                <div class="d-flex flex-column">
+                                  <div class="d-flex align-items-center">
+                                    <h5 id="user" class="mb-0">Maria Smantha</h5>
+                                    <span id="time" class="ml-2">2 hours ago</span>
+                                  </div>
+                                  <span id="type" class="badge bg-secondary">respond</span>
+                                </div>
+                              </div>
+                              <div class="col-4">
+                              </div>
+                            </div>
+                              <div id="reply-detail">	
+                              It is a long established fact that a reader will be distracted by the readable content of a page.
+                              </div>	                       
+                          </div>
+                        </div>
+                      </template>
+
+        
 
       </div>
 
-
+      <!--end replies section-->
 
       <form>
         <div class="form-group">
@@ -79,10 +103,10 @@
           <br/>   
           <br/>    
           <div class="btn-group">
-            <input type="radio" class="btn-check" name="Res-cla" id="option1" autocomplete="off" value="respond" checked />
+            <input type="radio" class="btn-check" name="Res-cla" id="option1" autocomplete="off" value="Respond" checked />
             <label class="btn btn-secondary" for="option1">Respond</label>
           
-            <input type="radio" class="btn-check" name="Res-cla" id="option2" value="clarify" autocomplete="off" />
+            <input type="radio" class="btn-check" name="Res-cla" id="option2" value="Clarify" autocomplete="off" />
             <label class="btn btn-secondary" for="option2">Clarify</label>
           </div>
         </div>
