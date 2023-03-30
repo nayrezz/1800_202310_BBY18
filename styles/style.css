@@ -1,4 +1,3 @@
-
 /*
 * --------------------------------------------
 * These are some styles that I am customizing 
@@ -6,7 +5,6 @@
 *---------------------------------------------
 */
 @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
 
 .responsive {
     width: 100%;
@@ -30,7 +28,7 @@
 }
 
 body {
-    background-color: #f1f2f2;                /* some primary colour */
+    background-color: #f1f2f2;               /* some primary colour */
 }
 
 .about-us p {
@@ -78,7 +76,7 @@ body {
 #display-welcome h1 {
     position: absolute;
     top: 30%;
-    color: white;
+    color: #f1f2f2;
     background-color: #23879e;
 
     
@@ -87,13 +85,17 @@ body {
 #welcome {
     position: relative;
     text-align: center;
-    color: white;
+    color: #f1f2f2;
+    height: 100%;
 }
 
 #welcome-img {
     border-radius: 20px;
     width: 100%;
 }
+
+footer {
+  }
 
 /* reply section */
 

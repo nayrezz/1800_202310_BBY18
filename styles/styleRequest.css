@@ -28,6 +28,7 @@
 }
 
 body {
+  min-height: calc(100vh - 50px);
   background-color: #f1f2f2;
   /* some primary colour */
 }
@@ -39,7 +40,7 @@ body {
   font-family: "Cabin", sans-serif;
 }
 
-#urgent {
+#urgent-display {
   background-color: #db4744;
 }
 
@@ -63,7 +64,8 @@ h2 {
 }
 
 .container {
-	margin: 10px;
+  min-height: 100vh;
+	margin: auto;
 }
 .container-fluid {
   max-width: 1200px;
@@ -302,9 +304,8 @@ h2 {
 }
 
 footer {
-  background: #212529;
-  height: 80px;
-  color: #fff;
+height: 50px;
+
 }
 
 #urgent-display {

@@ -3,7 +3,7 @@
 <html lang="en">
 
   <head>
-    <title>Create Profile</title>
+    <title>Edit Profile</title>
     <meta name="comp1800 template" content="My 1800 App" />
 
   <!-- Required meta tags -->
@@ -38,6 +38,7 @@
   />
 
   <!-- Link to styles of your own -->
+  <link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
   <!-- <link rel="stylesheet" href="./styles/style.css"> -->
   <link rel="stylesheet" href="./styles/style.css" />
 
@@ -71,15 +72,26 @@
         <input class="form-control" type="text" placeholder="Phone/Mobile Number" aria-label="default input example" id="phone">
         <br/>
 
-        <label for="exampleDataList" class="form-label">Add a default location:</label>
-        <input class="form-control" list="datalistOptions" id="location" placeholder="Type to search location">
-        <datalist id="datalistOptions">
-          <option value="Default">
-          <option value="Location1">
-          <option value="Location2">
-          <option value="Location3">
-          <option value="Location4">
-        </datalist>
+        <div class="dropdown" class="form-control">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Your Neighborhood
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Burnaby - Deer Lake</a>
+            <a class="dropdown-item" href="#">Burnaby - Brentwood</a>
+            <a class="dropdown-item" href="#">Burnaby - Metrotown</a>
+            <a class="dropdown-item" href="#">Burnaby - Willingdon-Heights</a>
+
+            <a class="dropdown-item" href="#">Vancouver - Burrard</a>
+            <a class="dropdown-item" href="#">Vancouver - Kitsilano</a>
+            <a class="dropdown-item" href="#">Vancouver - Mount Pleasant</a>
+            <a class="dropdown-item" href="#">Vancouver - Point Grey</a>
+            <a class="dropdown-item" href="#">Vancouver - Renfrew-Collingwood</a>
+            <a class="dropdown-item" href="#">Vancouver - South Vancouver</a>
+            <a class="dropdown-item" href="#">Vancouver - UBC</a>
+            <a class="dropdown-item" href="#">Vancouver - West Side</a>
+          </div>
+        </div>
 
         <p><h4>About You</h4>
         What are your interests?
@@ -95,7 +107,7 @@
 
         <br>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <button type="button" class="btn btn-primary btn-lg px-4 gap-3" onclick="editUserInfo()">
+          <button type="button" class="btn btn-info btn-lg px-4 gap-3" onclick="editUserInfo()">
             Edit
           </button>
           <button type="button" class="btn btn-primary btn-lg px-4 gap-3" onclick="saveUserInfo()">
