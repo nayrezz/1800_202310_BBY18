@@ -4,7 +4,9 @@
 function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("requestCardTemplate");
 
-    db.collection(collection).get()   //the collection called "requests"
+    db.collection(collection)
+        .orderBy("urgent", "desc")
+        .get()   //the collection called "requests"
         .then(allRequests=> {
             //var i = 1;  //Optional: if you want to have a unique ID for each hike
             allRequests.forEach(doc => { //iterate thru each doc
@@ -13,12 +15,13 @@ function displayCardsDynamically(collection) {
                 var paid = doc.data().paid;
                 var amount = doc.data().amount;
                 var urgent = doc.data().urgent;
-                var location = doc.data().location; //gets the length field
+                var location = doc.data().location; 
                 const displayname = doc.data().displayname;
+                const owner = doc.data().owner;
+                var timestamp = doc.data().last_updated;
+                
                 let newcard = cardTemplate.content.cloneNode(true);
 
-                
-                //update title and text and image
                 if(urgent){
                     newcard.querySelector('.urgent-title').innerHTML = "Urgent";
                     newcard.querySelector('#urgent-display').style.display = "block"
@@ -42,6 +45,28 @@ function displayCardsDynamically(collection) {
                     window.location.href = 'reply.html';
                 });
 
+                if (doc.data().last_updated != null && doc.data().last_updated != undefined) {
+                    var timeEl = newcard.querySelector('.posttime');
+                    timeEl.innerHTML = getTimeElapsed(timestamp);
+                  }
+
+                db.collection("replies").where("requestDocID", "==", doc.id)
+                    .get()
+                    .then(querySnapshot => {
+                        const numReplies = querySnapshot.size;
+                        newcard.querySelector('.numreplies').innerHTML = numReplies;
+                    });
+
+                if(owner === firebase.auth().currentUser.uid) {
+                    newcard.querySelector('.delete').style.display = 'block';
+
+                    newcard.querySelector('.delete').addEventListener('click', function() {
+                        var ID = doc.id;
+                        deleteRequest(ID);
+                        newcard.remove();
+                    });
+                }
+
                 //Optional: give unique ids to all elements for future use
                 // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
                 // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
@@ -60,4 +85,45 @@ displayCardsDynamically("requests");  //input param is the name of the collectio
 function saveRequestDocumentIDAndRedirect(ID){
     localStorage.setItem('requestDocID', ID);
     window.location.href = 'reply.html';
+}
+
+function deleteExpiredPosts() {
+    const twelveHoursAgo = Date.now() - 12 * 60 * 60 * 1000;
+    
+    db.collection("requests")
+      .where("urgent", "==", true)
+      .where("last_updated", "<", new Date(twelveHoursAgo))
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          doc.ref.delete().then(() => {
+            console.log("Document deleted");
+          }).catch((error) => {
+            console.error("Error deleting document: ", error);
+          });
+        });
+      })
+      .catch((error) => {
+        console.error("Error getting documents: ", error);
+      });
+  }
+  
+  deleteExpiredPosts();
+
+  function getTimeElapsed(timestamp) {
+    var now = Date.now();
+    var diff = now - timestamp.toMillis();
+
+    var minutes = Math.floor(diff / 60000);
+    if (minutes < 60) {
+        return `${minutes} minutes ago`;
+    }
+
+    var hours = Math.floor(minutes / 60);
+    if (hours < 24) {
+        return `${hours} hours ago`;
+    }
+
+    var days = Math.floor(hours / 24);
+    return `${days} days ago`;
 }

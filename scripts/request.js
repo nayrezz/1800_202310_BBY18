@@ -19,8 +19,7 @@ function savePost() {
                 amount: amount,
                 urgent: isUrgent,
                 location: loc,
-                last_updated: firebase.firestore.FieldValue
-                    .serverTimestamp() //current system time
+                last_updated: firebase.firestore.FieldValue.serverTimestamp() //current system time
             }).then(doc => {
                 console.log("Post document added!");
                 console.log(doc.id);
