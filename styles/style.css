@@ -43,6 +43,8 @@
 }
 
 body {
+      font-family: 'Roboto', sans-serif;
+  min-height: calc(100vh - 50px);
     background-color: #e2e2e2;
              /* some primary colour */
 }
