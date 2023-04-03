@@ -7,6 +7,13 @@ function insertNameFromFirestore(){
            currentUser.get().then(userDoc=>{
                //get the user name
                var userName= userDoc.data().name;
+               var prefName = userDoc.data().prefName;
+
+               if (prefName) {
+                userName = prefName;
+                }
+
+
                console.log(userName);
                //$("#name-goes-here").text(userName); //jquery
                document.getElementById("name-goes-here").innerText=userName;

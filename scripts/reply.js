@@ -105,7 +105,7 @@ function writeReply() {
                       details: details,
                       timestamp: firebase.firestore.FieldValue.serverTimestamp()
                   }).then(() => {
-                      window.location.href = "browseRequest.html"; //new line added
+                      location.reload(); // refresh the page
                   })
               })
       } else {

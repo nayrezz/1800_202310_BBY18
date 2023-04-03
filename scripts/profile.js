@@ -75,7 +75,7 @@ function saveUserInfo() {
   interests = document.getElementById("interests").value;
   occupation = document.getElementById("occupation").value;
 
-  currentUser.update({
+  userRef.update({
       name: userName,
       lastName: lastName,
       prefName: prefName,
@@ -90,11 +90,15 @@ function saveUserInfo() {
   })
   .then(() => {
       console.log("Document successfully updated!");
+      document.getElementById('personalInfoFields').disabled = true;
+      location.reload(); // refresh the page
   })
 
-  document.getElementById('personalInfoFields').disabled = true;
+  .catch((error) => {
+    console.error("Error updating document: ", error);
+    });
 
-  
+
 }
 let selectedLocation = '';
 function setLocation(location) {
