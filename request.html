@@ -77,21 +77,29 @@
           </div>
         </div>
       </div>
-      <br/>
+
       <label for="exampleDataList" class="form-label">Location</label>
-      <input class="form-control" list="datalistOptions" id="location" placeholder="Type to search location">
-      <datalist id="datalistOptions">
-        <option value="Default">
-        <option value="Location1">
-        <option value="Location2">
-        <option value="Location3">
-        <option value="Location4">
-      </datalist>
-      
-     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4"><img src="Icons/location-icon.svg" width="20px" height="20px"> Add a location</button>
-      </div>
+        <div class="dropdown" class="form-control">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span id="selectedLocation">Your Neighborhood</span>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="location dropdown-item" href="#" data-value="Burnaby - Deer Lake" onclick="setLocation('Burnaby - Deer Lake')">Burnaby - Deer Lake</a>
+            <a class="location dropdown-item" href="#" data-value="Burnaby - Brentwood" onclick="setLocation('Burnaby - Brentwood')">Burnaby - Brentwood</a>
+            <a class="location dropdown-item" href="#" data-value="Burnaby - Metrotown" onclick="setLocation('Burnaby - Metrotown')">Burnaby - Metrotown</a>
+            <a class="location dropdown-item" href="#" data-value="Burnaby - Willingdon-Heights" onclick="setLocation('Burnaby - Willingdon-Heights')">Burnaby - Willingdon-Heights</a>
+    
+            <a class="location dropdown-item" href="#" data-value="Vancouver - Burrard" onclick="setLocation('Vancouver - Burrard')">Vancouver - Burrard</a>
+            <a class="location dropdown-item" href="#" data-value="Vancouver - Kitsilano" onclick="setLocation('Vancouver - Kitsilano')">Vancouver - Kitsilano</a>
+            <a class="location dropdown-item" href="#" data-value="Vancouver - Mount Pleasant" onclick="setLocation('Vancouver - Mount Pleasant')">Vancouver - Mount Pleasant</a>
+            <a class="location dropdown-item" href="#" data-value="Vancouver - Point Grey" onclick="setLocation('Vancouver - Point Grey')">Vancouver - Point Grey</a>
+            <a class="location dropdown-item" href="#" data-value="Vancouver - Renfrew-Collingwood" onclick="setLocation('Vancouver - Renfrew-Collingwood')">Vancouver - Renfrew-Collingwood</a>
+            <a class="location dropdown-item" href="#" data-value="Vancouver - South Vancouver" onclick="setLocation('Vancouver - South Vancouver')">Vancouver - South Vancouver</a>
+            <a class="location dropdown-item" href="#" data-value="Vancouver - UBC" onclick="setLocation('Vancouver - UBC')">Vancouver - UBC</a>
+            <a class="location dropdown-item" href="#" data-value="Vancouver - West Side" onclick="setLocation('Vancouver - West Side')">Vancouver - West Side</a>
+          </div>
+        </div>
+    
       <br/>
 
 

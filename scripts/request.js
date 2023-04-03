@@ -31,3 +31,9 @@ function savePost() {
         }
     });
 }
+let selectedLocation = '';
+function setLocation(location) {
+    selectedLocation = location;
+    document.getElementById("selectedLocation").textContent = location;
+
+  }
