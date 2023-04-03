@@ -63,13 +63,15 @@ function editUserInfo() {
 
 function saveUserInfo() {
   //enter code here
+  const userId = firebase.auth().currentUser.uid; // get the current user's ID
+  const userRef = firebase.firestore().collection("users").doc(userId);
+
 
   userName = document.getElementById('firstName').value;          
   lastName = document.getElementById("lastName").value;
   prefName = document.getElementById("prefName").value;
   email = document.getElementById("email").value;
   phone = document.getElementById("phone").value;
-  location = document.getElementById("location").value;
   interests = document.getElementById("interests").value;
   occupation = document.getElementById("occupation").value;
 
@@ -79,7 +81,7 @@ function saveUserInfo() {
       prefName: prefName,
       email: email,
       phone: phone,
-      location: location,
+      location: selectedLocation,
       interests: interests,
       occupation: occupation,
 
@@ -91,4 +93,12 @@ function saveUserInfo() {
   })
 
   document.getElementById('personalInfoFields').disabled = true;
+
+  
 }
+let selectedLocation = '';
+function setLocation(location) {
+    selectedLocation = location;
+    document.getElementById("selectedLocation").textContent = location;
+
+  }

@@ -74,29 +74,29 @@
 
         <div class="dropdown" class="form-control">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Your Neighborhood
+            <span id="selectedLocation">Your Neighborhood</span>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Burnaby - Deer Lake</a>
-            <a class="dropdown-item" href="#">Burnaby - Brentwood</a>
-            <a class="dropdown-item" href="#">Burnaby - Metrotown</a>
-            <a class="dropdown-item" href="#">Burnaby - Willingdon-Heights</a>
-
-            <a class="dropdown-item" href="#">Vancouver - Burrard</a>
-            <a class="dropdown-item" href="#">Vancouver - Kitsilano</a>
-            <a class="dropdown-item" href="#">Vancouver - Mount Pleasant</a>
-            <a class="dropdown-item" href="#">Vancouver - Point Grey</a>
-            <a class="dropdown-item" href="#">Vancouver - Renfrew-Collingwood</a>
-            <a class="dropdown-item" href="#">Vancouver - South Vancouver</a>
-            <a class="dropdown-item" href="#">Vancouver - UBC</a>
-            <a class="dropdown-item" href="#">Vancouver - West Side</a>
+            <a class="location dropdown-item" href="#" data-value="Burnaby - Deer Lake" onclick="setLocation('Burnaby - Deer Lake')">Burnaby - Deer Lake</a>
+            <a class="location dropdown-item" href="#" data-value="Burnaby - Brentwood" onclick="setLocation('Burnaby - Brentwood')">Burnaby - Brentwood</a>
+            <a class="location dropdown-item" href="#" data-value="Burnaby - Metrotown" onclick="setLocation('Burnaby - Metrotown')">Burnaby - Metrotown</a>
+            <a class="location dropdown-item" href="#" data-value="Burnaby - Willingdon-Heights" onclick="setLocation('Burnaby - Willingdon-Heights')">Burnaby - Willingdon-Heights</a>
+    
+            <a class="location dropdown-item" href="#" data-value="Vancouver - Burrard" onclick="setLocation('Vancouver - Burrard')">Vancouver - Burrard</a>
+            <a class="location dropdown-item" href="#" data-value="Vancouver - Kitsilano" onclick="setLocation('Vancouver - Kitsilano')">Vancouver - Kitsilano</a>
+            <a class="location dropdown-item" href="#" data-value="Vancouver - Mount Pleasant" onclick="setLocation('Vancouver - Mount Pleasant')">Vancouver - Mount Pleasant</a>
+            <a class="location dropdown-item" href="#" data-value="Vancouver - Point Grey" onclick="setLocation('Vancouver - Point Grey')">Vancouver - Point Grey</a>
+            <a class="location dropdown-item" href="#" data-value="Vancouver - Renfrew-Collingwood" onclick="setLocation('Vancouver - Renfrew-Collingwood')">Vancouver - Renfrew-Collingwood</a>
+            <a class="location dropdown-item" href="#" data-value="Vancouver - South Vancouver" onclick="setLocation('Vancouver - South Vancouver')">Vancouver - South Vancouver</a>
+            <a class="location dropdown-item" href="#" data-value="Vancouver - UBC" onclick="setLocation('Vancouver - UBC')">Vancouver - UBC</a>
+            <a class="location dropdown-item" href="#" data-value="Vancouver - West Side" onclick="setLocation('Vancouver - West Side')">Vancouver - West Side</a>
           </div>
         </div>
 
         <p><h4>About You</h4>
         What are your interests?
           <label for="exampleFormControlTextarea1" class="form-label"></label>
-          <textarea class="form-control" id="Interests" rows="3" placeholder="Description"></textarea>
+          <textarea class="form-control" id="interests" rows="3" placeholder="Description"></textarea>
         
         What's your occupation?
         <input class="form-control" type="text" id ="occupation" placeholder="Occupation" aria-label="default input example">
