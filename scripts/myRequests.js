@@ -103,9 +103,10 @@ function deleteRequest(requestid) {
         if (result) {
             //Logic to delete the item
             db.collection("requests").doc(requestid)
-                            .delete()
+            .delete()
             .then(() => {
                 console.log("1. Document deleted from Requests collection");
+                location.reload
             }).catch((error) => {
                 console.error("Error removing document: ", error);
             });
