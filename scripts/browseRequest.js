@@ -6,6 +6,7 @@ function displayCardsDynamically(collection) {
 
     db.collection(collection)
         .orderBy("urgent", "desc")
+        .orderBy("last_updated", "asc")
         .get()   //the collection called "requests"
         .then(allRequests=> {
             //var i = 1;  //Optional: if you want to have a unique ID for each hike
@@ -50,12 +51,23 @@ function displayCardsDynamically(collection) {
                     timeEl.innerHTML = getTimeElapsed(timestamp);
                   }
 
+                // db.collection("replies").where("requestDocID", "==", doc.id)
+                //     .get()
+                //     .then(querySnapshot => {
+                //         const numReplies = querySnapshot.size;
+                //         newcard.querySelector('.numreplies').innerHTML = numReplies;
+                //     });
+
                 db.collection("replies").where("requestDocID", "==", doc.id)
                     .get()
                     .then(querySnapshot => {
                         const numReplies = querySnapshot.size;
                         newcard.querySelector('.numreplies').innerHTML = numReplies;
+                    })
+                    .catch(error => {
+                        console.log("Error getting replies: ", error);
                     });
+
 
                 if(owner === firebase.auth().currentUser.uid) {
                     newcard.querySelector('.delete').style.display = 'block';
@@ -63,7 +75,7 @@ function displayCardsDynamically(collection) {
                     newcard.querySelector('.delete').addEventListener('click', function() {
                         var ID = doc.id;
                         deleteRequest(ID);
-                        newcard.remove();
+                        newcard.parentNode.removeChild(newcard);
                     });
                 }
 
@@ -126,4 +138,22 @@ function deleteExpiredPosts() {
 
     var days = Math.floor(hours / 24);
     return `${days} days ago`;
+}
+
+function deleteRequest(requestid) {
+    var result = confirm("Want to delete?");
+    if (result) {
+        //Logic to delete the item
+        db.collection("requests").doc(requestid)
+        .delete()
+        .then(() => {
+            console.log("1. Document deleted from Requests collection");
+            location.reload(); // refresh the page
+        }).catch((error) => {
+            console.error("Error removing document: ", error);
+        });
+    }
+// deleteDoc(doc(db, "requests", DocID))
+alert ("Your request has been deleted.");
+
 }
