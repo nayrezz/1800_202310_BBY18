@@ -77,6 +77,10 @@ body {
     flex: 1;
 }
 
+footer {
+    height: 50px;
+    }
+
 .title {
     margin-top: 20px;
     display: flex;
