@@ -109,7 +109,17 @@ footer {
 
 }
 
+#new-request {
+    padding: 25px;
+    background-color: white;
+    margin: 25px;
+    border-radius: 30px;
+    text-align: center;
+
+}
+
 #profile {
+    padding: 25px;
     background-color: white;
     margin: 25px;
     border-radius: 30px;
@@ -131,6 +141,23 @@ footer {
     border-radius: 30px;
     text-align: center;
 
+}
+
+#about table tr{
+    border: 2px solid #d2d2d2;
+    border-radius: 1em;
+
+    border-collapse: collapse;
+    overflow: hidden;
+}
+#about th, td {
+    padding: 1em;
+    background: white;
+    border-bottom: 2px solid #d2d2dc; 
+  }
+
+#about h4 {
+    padding-top: 20px;
 }
 
 #welcome-img {

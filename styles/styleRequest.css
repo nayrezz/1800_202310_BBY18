@@ -67,10 +67,10 @@ body {
   --font3: "Roboto", sans-serif;
 }
 
-body {
+/* body {
   font-family: var(--font3);
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-}
+} */
 
 h2 {
   font-weight: 900;
@@ -350,3 +350,4 @@ height: 50px;
   color: #605F5E;
   font-size: small;
 }
+
