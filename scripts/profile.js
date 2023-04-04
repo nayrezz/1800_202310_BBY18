@@ -1,4 +1,6 @@
 
+const requestsRef = firebase.firestore().collection("requests");
+
 function populateUserInfo() {
     firebase.auth().onAuthStateChanged(user => {
         // Check if user is signed in:
@@ -76,6 +78,22 @@ function saveUserInfo() {
   interests = document.getElementById("interests").value;
   occupation = document.getElementById("occupation").value;
 
+  // update the display name on all requests made by the user
+  requestsRef.where("owner", "==", userId).get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      const requestId = doc.id;
+      const request = doc.data();
+      requestsRef.doc(requestId).update({
+        displayname: userName
+      }).then(() => {
+        console.log(`Request ${requestId} updated with new display name: ${userName}`);
+      }).catch((error) => {
+        console.error(`Error updating request ${requestId}: `, error);
+      });
+    });
+  });
+
+
   userRef.update({
       name: userName,
       lastName: lastName,
@@ -93,6 +111,16 @@ function saveUserInfo() {
       console.log("Document successfully updated!");
       document.getElementById('personalInfoFields').disabled = true;
       location.reload(); // refresh the page
+    //   const requestsRef = firebase.firestore().collection("requests");
+    //   const user = firebase.auth().currentUser;
+    //   const query = requestsRef.where("owner", "==", user.uid);
+    //   query.get().then((querySnapshot) => {
+    //     querySnapshot.forEach(async (doc)=> {
+    //       const post = doc.data();
+    //       console.log(doc.id);
+    //       await requestsRef.doc(doc.id).update({"owner": userName})
+    //     });
+    //   });
   })
 
   .catch((error) => {
@@ -101,6 +129,8 @@ function saveUserInfo() {
 
 
 }
+
+
 let selectedLocation = '';
 function setLocation(location) {
     selectedLocation = location;
@@ -136,3 +166,9 @@ function setLocation(location) {
             }
     })
 }
+
+
+
+
+
+

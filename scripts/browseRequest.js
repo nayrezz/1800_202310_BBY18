@@ -17,7 +17,7 @@ function displayCardsDynamically(collection) {
                 var amount = doc.data().amount;
                 var urgent = doc.data().urgent;
                 var location = doc.data().location; 
-                const displayname = doc.data().displayname;
+                var displayname = doc.data().displayname;
                 const owner = doc.data().owner;
                 var timestamp = doc.data().last_updated;
                 
@@ -31,7 +31,7 @@ function displayCardsDynamically(collection) {
                 newcard.querySelector('.subject').innerHTML = title;
 
                 if(paid) {
-                    newcard.querySelector('.value').innerHTML = amount;
+                    newcard.querySelector('.value').innerHTML = "$ " + amount;
                 } else{
                     newcard.querySelector('.value').innerHTML = "Free";
                 }
@@ -160,3 +160,8 @@ function deleteRequest(requestid) {
 ;
 
 }
+
+
+
+
+
