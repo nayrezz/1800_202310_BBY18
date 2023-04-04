@@ -82,7 +82,17 @@ function showMyPosts(collection) {
                         newcard.querySelector('.community').innerHTML = location;
                         newcard.querySelector('.desc').innerHTML = details;
                         newcard.querySelector('#delete-request').onclick = () => deleteRequest(doc.id);
+
+                        newcard.querySelector('.btn').addEventListener('click', function() {
+                            var ID = doc.id;
+                            localStorage.setItem('requestDocID', ID);
+                            window.location.href = 'reply.html';
+
+                        });
+
                         document.getElementById(collection + "-go-here").appendChild(newcard);
+
+
 
 
                     }

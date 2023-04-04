@@ -3,13 +3,15 @@ var requestDocID = localStorage.getItem("requestDocID");    //visible to all fun
 
 console.log(requestDocID);
 
-function displayRequestDetails(requestName, urgency, paid, location, description) {
+function displayRequestDetails(requestName, urgency, paid, location, description, amount) {
   document.getElementById("requestName").innerHTML = requestName;
   if (urgency) {
     document.getElementById("urgent").style.display = "block";
   }
   if (paid) {
-    document.getElementById("paid").style.display = "block";
+    document.getElementById("paid").innerHTML = "$" + amount;
+  } else {
+    document.getElementById("paid").innerHTML = "FREE";
   }
   document.getElementById("location").innerHTML = location;
   document.getElementById("description").innerHTML = description;
@@ -27,10 +29,11 @@ function getRequestDetails(id) {
         var requestName = thisRequest.data().subject;
         var urgency = thisRequest.data().urgent;
         var paid = thisRequest.data().paid;
+        var amount = thisRequest.data().amount;
         var location = thisRequest.data().location;
         var description = thisRequest.data().description;
 
-        displayRequestDetails(requestName, urgency, paid, location, description);
+        displayRequestDetails(requestName, urgency, paid, location, description, amount);
 
           });
 }

@@ -133,7 +133,8 @@ h2 {
 }
 
 .card .desc {
-  max-height: 200px; /*adjust this value to your liking*/
+  max-height: 200px;
+  min-height: 20px;
   overflow: auto;
 }
 
