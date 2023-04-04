@@ -147,13 +147,16 @@ function deleteRequest(requestid) {
         db.collection("requests").doc(requestid)
         .delete()
         .then(() => {
-            console.log("1. Document deleted from Requests collection");
-            location.reload(); // refresh the page
+            console.log("Document deleted from Requests collection");
+            setTimeout(() => {
+                location.reload();
+            }, 1000); 
+            
         }).catch((error) => {
             console.error("Error removing document: ", error);
         });
     }
 // deleteDoc(doc(db, "requests", DocID))
-alert ("Your request has been deleted.");
+;
 
 }

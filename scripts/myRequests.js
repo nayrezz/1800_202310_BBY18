@@ -81,7 +81,18 @@ function showMyPosts(collection) {
 
                         newcard.querySelector('.community').innerHTML = location;
                         newcard.querySelector('.desc').innerHTML = details;
-                        newcard.querySelector('#delete-request').onclick = () => deleteRequest(doc.id);
+                        // newcard.querySelector('#delete-request').onclick = () => deleteRequest(doc.id);
+                        
+                        if(owner === firebase.auth().currentUser.uid) {
+                            newcard.querySelector('.delete').style.display = 'block';
+        
+                            newcard.querySelector('.delete').addEventListener('click', function() {
+                                var ID = doc.id;
+                                deleteRequest(ID);
+                                newcard.parentNode.removeChild(newcard);
+                            });
+                        }
+
 
                         newcard.querySelector('.btn').addEventListener('click', function() {
                             var ID = doc.id;
@@ -116,64 +127,15 @@ function deleteRequest(requestid) {
             .delete()
             .then(() => {
                 console.log("1. Document deleted from Requests collection");
-                location.reload
+                setTimeout(() => {
+                    location.reload();
+                }, 1000); // Reload after 1 second (1000 milliseconds)
             }).catch((error) => {
                 console.error("Error removing document: ", error);
             });
         }
     // deleteDoc(doc(db, "requests", DocID))
-    alert ("Your request has been deleted.");
+    ;
 
 }
 
-
-// function deleteFromRequests(requestid) {
-//     firebase.auth().onAuthStateChanged(user => {
-//             })
-//             .then(() => {
-//                 console.log("2. post deleted from user doc");
-//                 deleteFromStorage(requestid);
-//             })
-//         }
-
-
-
-
-
-
-// displayCardsDynamically("requests");  //input param is the name of the collection
-
-//sayHello();
-
-// function savePost() {
-//     alert ("SAVE POST is triggered");
-//     firebase.auth().onAuthStateChanged(function (user) {
-//         if (user) {
-//             // User is signed in.
-//             // Do something for the user here.
-//             var desc = document.getElementById("description").value;
-//             var sub = document.getElementById("subject").value;
-//             var isPaid = document.getElementById("paid").checked;
-//             var amount = document.getElementById("amount").value;
-//             var isUrgent = document.getElementById("urgentCheck").checked;
-//             var loc = document.getElementById("location").value;
-//             db.collection("requests").add({
-//                 owner: user.uid,
-//                 description: desc,
-//                 subject: sub,
-//                 paid: isPaid,
-//                 amount: amount,
-//                 urgent: isUrgent,
-//                 location: loc,
-//                 last_updated: firebase.firestore.FieldValue
-//                     .serverTimestamp() //current system time
-//             }).then(doc => {
-//                 console.log("Post document added!");
-//                 console.log(doc.id);
-//                 saveNewPostID(user.uid, doc.id);
-//             })
-//         } else {
-//             // No user is signed in.
-//         }
-//     });
-// }

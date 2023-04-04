@@ -15,7 +15,8 @@ function populateUserInfo() {
                     var prefName = userDoc.data().prefName;
                     var email = userDoc.data().email;
                     var phone = userDoc.data().phone;
-                    var location = userDoc.data().DefaultLocation;
+                    var location = userDoc.data().location;
+                    console.log(location);
                     var interests = userDoc.data().interests;
                     var occupation = userDoc.data().occupation;
                     
@@ -37,7 +38,7 @@ function populateUserInfo() {
                         document.getElementById("phone").value = phone;
                     }
                     if (location != null) {
-                        document.getElementById("location").value = location;
+                        document.getElementById("selectedLocation").textContent = location;
                     }
                     if (interests != null) {
                         document.getElementById("interests").value = interests;
