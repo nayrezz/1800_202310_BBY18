@@ -121,6 +121,14 @@ body {
 
 }
 
+#about {
+    background-color: white;
+    margin: 25px;
+    border-radius: 30px;
+    text-align: center;
+
+}
+
 #welcome-img {
     border-radius: 20px;
     width: 100%;
