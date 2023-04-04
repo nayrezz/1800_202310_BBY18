@@ -80,9 +80,9 @@ h2 {
   min-height: 100vh;
 	margin: auto;
 }
-.container-fluid {
+/* .container-fluid {
   max-width: 1200px;
-}
+} */
 
 .card {
   background: #fff;
