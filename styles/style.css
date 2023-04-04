@@ -128,6 +128,7 @@ footer {
 }
 
 #request {
+    padding: 25px;
     background-color: white;
     margin: 25px;
     border-radius: 30px;
