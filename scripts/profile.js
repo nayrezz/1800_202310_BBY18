@@ -107,3 +107,32 @@ function setLocation(location) {
     document.getElementById("selectedLocation").textContent = location;
 
   }
+
+  function deleteUser() {
+    firebase.auth().onAuthStateChanged(user => {
+
+            // Double check! Usability Heuristics #5
+            var result = confirm("WARNING " + user.displayName + 
+            ": Deleting your User Account!!");
+
+            // If confirmed, then go ahead
+            if (result) {
+                // First, delete from Firestore users collection 
+                db.collection("users").doc(user.uid).delete()
+                    .then(() => {
+                        console.log("Deleted from Firestore Collection");
+
+                        // Next, delete from Firebase Auth
+                        user.delete().then(() => {
+                            console.log("Deleted from Firebase Auth.");
+                            alert("user has been deleted");
+                            window.location.href = "index.html";
+                        }).catch((error) => {
+                            console.log("Error deleting from Firebase Auth " + error);
+                        });
+                    }).catch((error) => {
+                        console.error("Error deleting user: ", error);
+                    });
+            }
+    })
+}

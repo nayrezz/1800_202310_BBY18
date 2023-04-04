@@ -9,3 +9,11 @@ function logout() {
         // An error happened.
       });
 }
+
+function checkLoginStatusAndRedirect() {
+  firebase.auth().onAuthStateChanged(user => {
+    if (!user) {
+      window.location.href = "index.html";
+    }
+  });
+}

@@ -169,6 +169,11 @@ footer {
     height: 40%;
 }
 
+#userRemove {
+    background-color: #FB3640;
+    margin-top: 40px;
+}
+
 
 
 /* reply section */
