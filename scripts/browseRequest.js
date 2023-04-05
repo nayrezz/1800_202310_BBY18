@@ -7,6 +7,7 @@ function displayCardsDynamically(collection) {
     db.collection(collection)
         .orderBy("urgent", "desc")
         .orderBy("last_updated", "asc")
+        .orderBy("responded")
         .get()   //the collection called "requests"
         .then(allRequests=> {
             //var i = 1;  //Optional: if you want to have a unique ID for each hike
@@ -23,19 +24,26 @@ function displayCardsDynamically(collection) {
                 
                 let newcard = cardTemplate.content.cloneNode(true);
 
+                
+
                 if(urgent){
                     newcard.querySelector('.urgent-title').innerHTML = "Urgent";
                     newcard.querySelector('#urgent-display').style.display = "block"
                 } 
                 
-                newcard.querySelector('.subject').innerHTML = title;
+                newcard.querySelector('.subject').innerHTML = title + (doc.data().responded ? " - RESPONDED" : "");
 
                 if(paid) {
-                    newcard.querySelector('.value').innerHTML = "$ " + amount;
+                    const amountString = "$ " + Number(amount).toFixed(2)
+                    newcard.querySelector('.value').innerHTML = amountString;
                 } else{
                     newcard.querySelector('.value').innerHTML = "Free";
                 }
                 
+                if (doc.data().responded) {
+                    newcard.querySelector('.card').style.backgroundColor = "#B4D9BA";
+                }
+
                 newcard.querySelector('.community').innerHTML = location;
                 newcard.querySelector('.user').innerHTML = displayname;
                 newcard.querySelector('.desc').innerHTML = details;
@@ -58,16 +66,23 @@ function displayCardsDynamically(collection) {
                 //         newcard.querySelector('.numreplies').innerHTML = numReplies;
                 //     });
 
-                db.collection("replies").where("requestDocID", "==", doc.id)
-                    .get()
-                    .then(querySnapshot => {
+                console.log(doc.id);
+                
+                    // Fetch and display the number of replies
+                    let numRepliesEl = newcard.querySelector('.numreplies');
+                  
+                    db.collection("replies").where("requestDocID", "==", doc.id)
+                      .get()
+                      .then(querySnapshot => {
+                        console.log(doc.id)
                         const numReplies = querySnapshot.size;
-                        newcard.querySelector('.numreplies').innerHTML = numReplies;
-                    })
-                    .catch(error => {
+                        console.log(numReplies)
+                        numRepliesEl.innerHTML = numReplies + " Replies";
+                      })
+                      .catch(error => {
                         console.log("Error getting replies: ", error);
-                    });
-
+                      });
+               
 
                 if(owner === firebase.auth().currentUser.uid) {
                     newcard.querySelector('.delete').style.display = 'block';

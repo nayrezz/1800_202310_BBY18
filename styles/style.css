@@ -4,118 +4,117 @@
 * to over-ride the default bootstrap ones
 *---------------------------------------------
 */
-@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Cabin&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 
 .responsive {
-    width: 100%;
-    height: auto;
-  }
+  width: 100%;
+  height: auto;
+}
 
 .bg-info {
-    background-color: #247BA0 !important;     /* some secondary colour */
+  background-color: #247ba0 !important; /* some secondary colour */
 }
 
 .navbar-light .navbar-brand {
-    
-    color: #f1f2f2;                           /* contrast to secondary colour */
+  color: #f1f2f2; /* contrast to secondary colour */
 }
 
 .navbar img {
-    height: 40px;
+  height: 40px;
 }
 
-
 #hero img {
-    width: 100%;
-
-
+  width: 100%;
 }
 
 .btn-primary {
-    color: white;                           /* contrast to secondary colour */
-    font-size: 150%;
-    background-color: #247BA0;                /* some secondary colour */
-    border-color: #247BA0;                    /* some accent colour */
-    border-width: none
+  color: white; /* contrast to secondary colour */
+  font-size: 150%;
+  background-color: #247ba0; /* some secondary colour */
+  border-color: #247ba0; /* some accent colour */
+  border-width: none;
 }
 
 body {
-      font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   min-height: calc(100vh - 50px);
-    background-color: #e2e2e2;
-             /* some primary colour */
+  background-color: #e2e2e2;
+  /* some primary colour */
 }
 
 .about-us p {
-    margin-top: 20px;
-    padding-left: 30px;
-    padding-right: 30px
+  margin-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .about-us h2 {
-    text-align: center;
-    margin-top: 15px;
+  text-align: center;
+  margin-top: 15px;
 }
 
 .about-us ul {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .list-container {
-    display: flex;
+  display: flex;
 }
 
 .list-container ul {
-    flex: 1;
-    margin-right: 10px;
+  flex: 1;
+  margin-right: 10px;
 }
 
 .text-container {
-    flex: 1;
+  flex: 1;
 }
 
 footer {
-    height: 50px;
-    }
-
-.title {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-      font-family: 'Roboto', sans-serif;
-  }
-
-#urgent {
-    background-color: #FB3640;
+  height: 50px;
 }
 
+.title {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+}
 
+#urgent {
+  background-color: #e71D36;
+}
 
 #display-welcome h1 {
-    padding-top: 80px;
-    font-family: 'Roboto', sans-serif;
-        color: #247BA0  
+  padding-top: 80px;
+  font-family: "Roboto", sans-serif;
+  color: #247ba0;
 }
 
 #welcome {
-    background-color: white;
-    margin: 25px;
-    border-radius: 30px;
-    text-align: center;
-
+  background-color: white;
+  margin: 25px;
+  border-radius: 30px;
+  text-align: center;
 }
 
 #new-request {
+  padding: 25px;
+  background-color: white;
+  margin: 25px;
+  border-radius: 30px;
+  text-align: center;
+}
+
+#help {
     padding: 25px;
     background-color: white;
     margin: 25px;
     border-radius: 30px;
     text-align: center;
-
 }
 
 #help {
@@ -127,12 +126,18 @@ footer {
 }
 
 #profile {
+  padding: 25px;
+  background-color: white;
+  margin: 25px;
+  border-radius: 30px;
+  text-align: center;
+}
+#privacy {
     padding: 25px;
     background-color: white;
     margin: 25px;
     border-radius: 30px;
     text-align: center;
-
 }
 #privacy {
     padding: 25px;
@@ -143,51 +148,50 @@ footer {
 }
 
 #request {
-    padding: 25px;
-    background-color: white;
-    margin: 25px;
-    border-radius: 30px;
-    text-align: center;
-
+  padding: 25px;
+  background-color: white;
+  margin: 25px;
+  border-radius: 30px;
+  text-align: center;
 }
 
 #about {
-    background-color: white;
-    margin: 25px;
-    border-radius: 30px;
-    text-align: center;
-
+  background-color: white;
+  margin: 25px;
+  border-radius: 30px;
+  text-align: center;
 }
 
-#about table tr{
-    border: 2px solid #d2d2d2;
-    border-radius: 1em;
+#about table tr {
+  border: 2px solid #d2d2d2;
+  border-radius: 1em;
 
-    border-collapse: collapse;
-    overflow: hidden;
+  border-collapse: collapse;
+  overflow: hidden;
 }
-#about th, td {
-    padding: 1em;
-    background: white;
-    border-bottom: 2px solid #d2d2dc; 
-  }
+#about th,
+td {
+  padding: 1em;
+  background: white;
+  border-bottom: 2px solid #d2d2dc;
+}
 
 #about h4 {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
 #welcome-img {
-    border-radius: 20px;
-    width: 100%;
+  border-radius: 20px;
+  width: 100%;
 }
 
 .desc {
-    height: 40%;
+  height: 40%;
 }
 
 #userRemove {
-    background-color: #FB3640;
-    margin-top: 40px;
+  background-color: #fb3640;
+  margin-top: 40px;
 }
 
 ul {
@@ -201,61 +205,64 @@ ul {
 /* reply section */
 
 .commSection {
-    display: grid;
-    place-items: center;
-    font-family: 'Source Sans Pro', sans-serif;
-    background: #f1f2f2
+  display: grid;
+  place-items: center;
+  font-family: "Source Sans Pro", sans-serif;
+  background: #f1f2f2;
 }
 
-
-
-
- .comment {
-     position: relative;
-     display: flex;
-     padding:20px;
-     flex-direction: column;
-     min-width: 0;
-     word-wrap: break-word;
-     background-color: #fff;
-     background-clip: border-box;
-     border: 1px solid #d2d2dc;
-     border-radius: 11px;
-     -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
-     -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
-     box-shadow: 0px 0px 5px 0px rgb(161, 163, 164)
- }
- 
-
-.mediacom img{
-      
-    width: 60px;
-    height: 60px;
+.comment {
+  position: relative;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #d2d2dc;
+  border-radius: 11px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
+  box-shadow: 0px 0px 5px 0px rgb(161, 163, 164);
 }
 
-.mediacom{
-    display: block;
-    margin-bottom: 10px;
-}
-
-.comment .row {
-    display: flex;
-    flex-wrap: wrap; /* Add this property to force children to wrap onto new lines */
-  }
-
-
-#user {
-    margin-right: 10px;
+.mediacom img {
+  width: 60px;
+  height: 60px;
 }
 
 .mediacom {
-    flex-basis: 100%; /* Add this property to force the element to take up the full width of the parent container */
-  }
-
-.reply a {
-    
-    text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
 }
 
+.comment .row {
+  display: flex;
+  flex-wrap: wrap; /* Add this property to force children to wrap onto new lines */
+}
+
+#user {
+  margin-right: 10px;
+}
+
+.mediacom {
+  flex-basis: 100%; /* Add this property to force the element to take up the full width of the parent container */
+}
+
+.reply a {
+  text-decoration: none;
+}
+
+#trashicon{
+    width:25px;
+    height: 25px;
+}
+
+#urgent{
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /*end reply section */

@@ -45,12 +45,12 @@
 
     <!-- content goes here  -->
 
-    <div class="container">
+    <div id="profile">
       <br>
       <div class="container">
-        <h1><span id="requestName"> Request subject</span></h1>
+        <h1><span id="requestName">Request subject</span></h1>
         <br/>
-        <h3><span class="badge bg-secondary" id="urgent" style="display:none">URGENT!</span></h3>
+        <h3><span class="badge" id="urgent" style="display:none">URGENT!</span></h3>
         <h3><span class="badge bg-secondary" id="paid">Paid</span></h3>
         <div id="location"> Location </div>
         <div id="description"> Description </div>
@@ -78,7 +78,12 @@
                                     <h5 id="user" class="mb-0">Maria Smantha</h5>
                                     <span id="time" class="ml-2">2 hours ago</span>
                                   </div>
-                                  <span id="type" class="badge bg-secondary">respond</span>
+                                  <div style="display: flex; flex-direction: row; align-items: center;">
+                                    <span id="type" class="badge bg-secondary">respond</span>
+                                    <div class="delete" style="display: none; background-color: transparent;">
+                                      <img id="trashicon" class="delete-reply trashicon" src="./Icons/trash-can.png" alt="delete">
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                               <div class="col-4">
@@ -116,7 +121,7 @@
           <label for="exampleFormControlTextarea1">Details:</label>
           <textarea class="form-control" id="details" rows="3"></textarea>
         </div>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <div class="d-grid gap-2 justify-content-center">
           <button type="button" class="btn btn-primary btn-lg px-4 gap-3" onclick="writeReply()">Reply</button>
         </div>
       </form>

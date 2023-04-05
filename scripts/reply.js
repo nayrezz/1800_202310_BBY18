@@ -3,8 +3,9 @@ var requestDocID = localStorage.getItem("requestDocID");    //visible to all fun
 
 console.log(requestDocID);
 
-function displayRequestDetails(requestName, urgency, paid, location, description, amount) {
-  document.getElementById("requestName").innerHTML = requestName;
+function displayRequestDetails(requestName, urgency, paid, location, description, amount, responded) {
+  
+  document.getElementById("requestName").innerHTML = requestName + (responded ? " - RESPONDED" : "");
   if (urgency) {
     document.getElementById("urgent").style.display = "block";
   }
@@ -32,8 +33,9 @@ function getRequestDetails(id) {
         var amount = thisRequest.data().amount;
         var location = thisRequest.data().location;
         var description = thisRequest.data().description;
+        var responded = thisRequest.data().responded;
 
-        displayRequestDetails(requestName, urgency, paid, location, description, amount);
+        displayRequestDetails(requestName, urgency, paid, location, description, amount, responded);
 
           });
 }
@@ -60,7 +62,8 @@ function populateReplies() {
               var diff = now - doc.data().timestamp.toDate();
               var hours = Math.floor(diff / (1000 * 60 * 60));
               var days = Math.floor(hours / 24);
-              const displayname = doc.data().displayname; 
+              const displayname = doc.data().displayname;
+              const owner = doc.data().userID;
               console.log(time)
 
               let replyCard = replyTemplate.content.cloneNode(true);
@@ -74,6 +77,23 @@ function populateReplies() {
                 replyCard.querySelector('#time').innerHTML = ' - ' + hours + ' hour' + (hours > 1 ? 's' : '') + ' ago';
               }  
               replyCard.querySelector('#reply-detail').innerHTML = details;
+
+
+              
+              if(owner === firebase.auth().currentUser.uid) {
+                replyCard.querySelector('.delete').style.display = 'block';
+                console.log(owner);
+                console.log(firebase.auth().currentUser.uid);
+
+
+                replyCard.querySelector('.delete').addEventListener('click', function() {
+                    var ID = doc.id;
+                    deleteReply(ID);
+                    replyCard.parentNode.removeChild(replyCard);
+                });
+            }
+
+
               repliesGroup.appendChild(replyCard);
           })
       })
@@ -116,4 +136,27 @@ function writeReply() {
           window.location.href = 'index.html';
       }
   });
+}
+
+
+
+function deleteReply(replyid) {
+  var result = confirm("Want to delete?");
+  if (result) {
+      //Logic to delete the item
+      db.collection("replies").doc(replyid)
+      .delete()
+      .then(() => {
+          console.log("Document deleted from Requests collection");
+          setTimeout(() => {
+              location.reload();
+          }, 1000); 
+          
+      }).catch((error) => {
+          console.error("Error removing document: ", error);
+      });
+  }
+// deleteDoc(doc(db, "requests", DocID))
+;
+
 }
