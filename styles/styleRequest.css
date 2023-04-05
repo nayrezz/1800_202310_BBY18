@@ -25,6 +25,13 @@
   height: 40px;
 }
 
+.subject {
+  font-style: bold;
+  font-weight: 600;
+  font-size: x-large;
+  padding-bottom: 10px;
+}
+
 .btn-primary {
   color: white;
   /* contrast to secondary colour */
@@ -42,6 +49,7 @@ body {
   background-color: #e2e2e2;
   /* some primary colour */
 }
+
 
 .title {
   margin-top: 20px;
@@ -105,7 +113,7 @@ h2 {
 .card h5 {
   overflow: hidden;
   height: 56px;
-  font-weight: 900;
+
   font-size: 1rem;
 }
 
@@ -223,7 +231,7 @@ h2 {
   border: none;
   text-decoration: none;
   outline: 0;
-  box-shadow: -1px 6px 19px #e2e2e2;
+  /* box-shadow: -1px 6px 19px #e2e2e2; */
   border-radius: 100px;
 }
 
@@ -339,7 +347,7 @@ height: 50px;
 }
 
 #delete-request {
-  background-color: #fff;
+  background-color: transparent;
   border: #ddd;
   text-align: left;
   margin-left: 10px;
