@@ -109,24 +109,38 @@ function showMyPosts(collection) {
                           }
 
                           let respondedEl = newcard.querySelector('#responded');
-                          newcard.querySelector('#responded').addEventListener('click', function() {
-                            var confirmed = confirm("Was this request responded?");
-                            if (confirmed) {
-                              var requestRef = db.collection('requests').doc(doc.id);
-                              requestRef.update({
-                                responded: true,
-                                respondedTime: firebase.firestore.FieldValue.serverTimestamp()
-                              })
-                              .then(function() {
-                                console.log("Request responded successfully!");
-                                newcard.querySelector('.subject').innerHTML = title + " - RESPONDED";
-                                newcard.querySelector('.card').style.backgroundColor = "#B4D9BA"
-                              })
-                              .catch(function(error) {
-                                console.error("Error responding to request: ", error);
-                              });
-                            }
-                          });
+
+                        newcard.querySelector('#responded').addEventListener('click', function() {
+                            var requestRef = db.collection('requests').doc(doc.id);
+                            requestRef.get().then(function(doc) {
+                                if (doc.exists) {
+                                    var responded = doc.data().responded;
+                                    var confirmed;
+                                    if (responded) {
+                                        confirmed = confirm("Do you want to mark this request as not responded?");
+                                    } else {
+                                        confirmed = confirm("Was this request responded?");
+                                    }
+                                    if (confirmed) {
+                                        requestRef.update({
+                                            responded: !responded,
+                                            respondedTime: firebase.firestore.FieldValue.serverTimestamp()
+                                        })
+                                        .then(function() {
+                                            console.log("Request responded status updated successfully!");
+                                            window.location.reload(); // Reload the page to reflect the changes
+                                        })
+                                        .catch(function(error) {
+                                            console.error("Error updating request responded status: ", error);
+                                        });
+                                    }
+                                } else {
+                                    console.log("No such request document!");
+                                }
+                            }).catch(function(error) {
+                                console.error("Error getting request document: ", error);
+                            });
+                        });
   
 
                         

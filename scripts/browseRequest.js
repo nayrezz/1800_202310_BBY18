@@ -7,6 +7,7 @@ function displayCardsDynamically(collection) {
     db.collection(collection)
         .orderBy("urgent", "desc")
         .orderBy("last_updated", "asc")
+        .orderBy("responded")
         .get()   //the collection called "requests"
         .then(allRequests=> {
             //var i = 1;  //Optional: if you want to have a unique ID for each hike

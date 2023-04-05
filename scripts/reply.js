@@ -3,8 +3,9 @@ var requestDocID = localStorage.getItem("requestDocID");    //visible to all fun
 
 console.log(requestDocID);
 
-function displayRequestDetails(requestName, urgency, paid, location, description, amount) {
-  document.getElementById("requestName").innerHTML = requestName;
+function displayRequestDetails(requestName, urgency, paid, location, description, amount, responded) {
+  
+  document.getElementById("requestName").innerHTML = requestName + (responded ? " - RESPONDED" : "");
   if (urgency) {
     document.getElementById("urgent").style.display = "block";
   }
@@ -32,8 +33,9 @@ function getRequestDetails(id) {
         var amount = thisRequest.data().amount;
         var location = thisRequest.data().location;
         var description = thisRequest.data().description;
+        var responded = thisRequest.data().responded;
 
-        displayRequestDetails(requestName, urgency, paid, location, description, amount);
+        displayRequestDetails(requestName, urgency, paid, location, description, amount, responded);
 
           });
 }

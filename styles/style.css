@@ -27,6 +27,7 @@
 
 #hero img {
   width: 100%;
+  max-width: 500px;
 }
 
 .btn-primary {
@@ -109,12 +110,42 @@ footer {
   text-align: center;
 }
 
+#help {
+    padding: 25px;
+    background-color: white;
+    margin: 25px;
+    border-radius: 30px;
+    text-align: center;
+}
+
+#help {
+    padding: 25px;
+    background-color: white;
+    margin: 25px;
+    border-radius: 30px;
+    text-align: center;
+}
+
 #profile {
   padding: 25px;
   background-color: white;
   margin: 25px;
   border-radius: 30px;
   text-align: center;
+}
+#privacy {
+    padding: 25px;
+    background-color: white;
+    margin: 25px;
+    border-radius: 30px;
+    text-align: center;
+}
+#privacy {
+    padding: 25px;
+    background-color: white;
+    margin: 25px;
+    border-radius: 30px;
+    text-align: center;
 }
 
 #request {
@@ -161,6 +192,14 @@ td {
 #userRemove {
   background-color: #fb3640;
   margin-top: 40px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.footer {
+    color: #247BA0
 }
 
 /* reply section */
