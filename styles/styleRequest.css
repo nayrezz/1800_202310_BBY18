@@ -332,6 +332,7 @@ height: 50px;
 
 #urgent-display {
   display: none;
+  border-radius: 10px;
 }
 
 #community {

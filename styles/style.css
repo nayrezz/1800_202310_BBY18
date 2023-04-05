@@ -85,7 +85,7 @@ footer {
 }
 
 #urgent {
-  background-color: #fb3640;
+  background-color: #e71D36;
 }
 
 #display-welcome h1 {
@@ -221,5 +221,10 @@ td {
     height: 25px;
 }
 
+#urgent{
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /*end reply section */
