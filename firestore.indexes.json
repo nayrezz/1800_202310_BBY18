@@ -1,0 +1,73 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "requests",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "urgent",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "last_updated",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "requests",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "urgent",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "last_updated",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "requests",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "urgent",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "last_updated",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "responded",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "requests",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "urgent",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "last_updated",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "responded",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "responded_time",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
