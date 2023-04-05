@@ -236,5 +236,10 @@ footer {
     text-decoration: none;
 }
 
+#trashicon{
+    width:25px;
+    height: 25px;
+}
+
 
 /*end reply section */
