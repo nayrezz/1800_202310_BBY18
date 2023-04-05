@@ -118,6 +118,14 @@ footer {
 
 }
 
+#help {
+    padding: 25px;
+    background-color: white;
+    margin: 25px;
+    border-radius: 30px;
+    text-align: center;
+}
+
 #profile {
     padding: 25px;
     background-color: white;
@@ -125,6 +133,13 @@ footer {
     border-radius: 30px;
     text-align: center;
 
+}
+#privacy {
+    padding: 25px;
+    background-color: white;
+    margin: 25px;
+    border-radius: 30px;
+    text-align: center;
 }
 
 #request {
@@ -175,7 +190,13 @@ footer {
     margin-top: 40px;
 }
 
+ul {
+    list-style-type: none;
+}
 
+.footer {
+    color: #247BA0
+}
 
 /* reply section */
 
