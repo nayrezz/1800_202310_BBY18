@@ -1,6 +1,8 @@
 
 const requestsRef = firebase.firestore().collection("requests");
 
+
+//Populates the profile information.
 function populateUserInfo() {
     firebase.auth().onAuthStateChanged(user => {
         // Check if user is signed in:
@@ -64,6 +66,7 @@ function editUserInfo() {
   document.getElementById('personalInfoFields').disabled = false;
 }
 
+//Saves the user info.
 function saveUserInfo() {
   //enter code here
   const userId = firebase.auth().currentUser.uid; // get the current user's ID
@@ -111,16 +114,6 @@ function saveUserInfo() {
       console.log("Document successfully updated!");
       document.getElementById('personalInfoFields').disabled = true;
       location.reload(); // refresh the page
-    //   const requestsRef = firebase.firestore().collection("requests");
-    //   const user = firebase.auth().currentUser;
-    //   const query = requestsRef.where("owner", "==", user.uid);
-    //   query.get().then((querySnapshot) => {
-    //     querySnapshot.forEach(async (doc)=> {
-    //       const post = doc.data();
-    //       console.log(doc.id);
-    //       await requestsRef.doc(doc.id).update({"owner": userName})
-    //     });
-    //   });
   })
 
   .catch((error) => {
@@ -132,40 +125,13 @@ function saveUserInfo() {
 
 
 let selectedLocation = '';
+//function to fill the location box.
 function setLocation(location) {
     selectedLocation = location;
     document.getElementById("selectedLocation").textContent = location;
 
   }
 
-  function deleteUser() {
-    firebase.auth().onAuthStateChanged(user => {
-
-            // Double check! Usability Heuristics #5
-            var result = confirm("WARNING " + user.displayName + 
-            ": Deleting your User Account!!");
-
-            // If confirmed, then go ahead
-            if (result) {
-                // First, delete from Firestore users collection 
-                db.collection("users").doc(user.uid).delete()
-                    .then(() => {
-                        console.log("Deleted from Firestore Collection");
-
-                        // Next, delete from Firebase Auth
-                        user.delete().then(() => {
-                            console.log("Deleted from Firebase Auth.");
-                            alert("user has been deleted");
-                            window.location.href = "index.html";
-                        }).catch((error) => {
-                            console.log("Error deleting from Firebase Auth " + error);
-                        });
-                    }).catch((error) => {
-                        console.error("Error deleting user: ", error);
-                    });
-            }
-    })
-}
 
 
 

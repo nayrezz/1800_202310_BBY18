@@ -1,6 +1,5 @@
-function sayHello() {
-    
-}
+
+// logsout the user.
 function logout() {
     firebase.auth().signOut().then(() => {
         // Sign-out successful.
@@ -9,6 +8,8 @@ function logout() {
         // An error happened.
       });
 }
+
+//If the user is not logged, bumps them to index
 
 function checkLoginStatusAndRedirect() {
   firebase.auth().onAuthStateChanged(user => {

@@ -1,3 +1,4 @@
+// as the name implies, inserts name from firstore
 function insertNameFromFirestore(){
     // to check if the user is logged in:
     firebase.auth().onAuthStateChanged(user =>{
@@ -9,6 +10,7 @@ function insertNameFromFirestore(){
                var userName= userDoc.data().name;
                var prefName = userDoc.data().prefName;
 
+               //If the user has a preffered name, calls them by it.
                if (prefName) {
                 userName = prefName;
                 }

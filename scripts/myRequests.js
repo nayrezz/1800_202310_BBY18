@@ -1,51 +1,7 @@
 
 
-function displayCardsDynamically(collection) {
-    let cardTemplate = document.getElementById("requestCardTemplate");
 
-    db.collection(collection).get()   //the collection called "hikes"
-        .then(allRequests => {
-            //var i = 1;  //Optional: if you want to have a unique ID for each hike
-            allRequests.forEach(doc => { //iterate thru each doc
-                var title = doc.data().subject;       // get value of the "name" key
-                var details = doc.data().description;  // get value of the "details" key
-                var paid = doc.data().paid;
-                var amount = doc.data().amount;
-                var urgent = doc.data().urgent;
-                var location = doc.data().location; //gets the length field
-                let newcard = cardTemplate.content.cloneNode(true);
-
-
-                //update title and text and image
-                if (urgent) {
-                    newcard.querySelector('.urgent-title').innerHTML = "Urgent";
-                    newcard.querySelector('#urgent-display').style.display = "block"
-                }
-
-                newcard.querySelector('.subject').innerHTML = title;
-
-                if (paid) {
-                    newcard.querySelector('.value').innerHTML = amount;
-                } else {
-                    newcard.querySelector('.value').innerHTML = "Free";
-                }
-
-                newcard.querySelector('.community').innerHTML = location;
-                newcard.querySelector('.desc').innerHTML = details;
-
-                //Optional: give unique ids to all elements for future use
-                // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-                // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
-                // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
-
-                //attach to gallery, Example: "hikes-go-here"
-                document.getElementById(collection + "-go-here").appendChild(newcard);
-
-                //i++;   //Optional: iterate variable to serve as unique ID
-            })
-        })
-}
-
+//displays the logged in user cards.
 
 function showMyPosts(collection) {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -67,13 +23,18 @@ function showMyPosts(collection) {
                     let newcard = cardTemplate.content.cloneNode(true);
 
                     if (owner == uid) {
+
+                        //shows urgent only if urgent.
                         if (urgent) {
                             newcard.querySelector('.urgent-title').innerHTML = "Urgent";
                             newcard.querySelector('#urgent-display').style.display = "block"
                         }
 
+                        //display responded only if responded.
                         newcard.querySelector('.subject').innerHTML = title + (doc.data().responded ? " - RESPONDED" : "");
 
+
+                        //shows the amount only if paid and with 2 decimals.
                         if (paid) {
                             const amountString = "$ " + Number(amount).toFixed(2)
                             newcard.querySelector('.value').innerHTML = amountString;
@@ -81,16 +42,17 @@ function showMyPosts(collection) {
                             newcard.querySelector('.value').innerHTML = "Free";
                         }
 
+                        //if responded show post with green background
                         if (doc.data().responded) {
                             newcard.querySelector('.card').style.backgroundColor = "#B4D9BA";
                         }
 
                         newcard.querySelector('.community').innerHTML = location;
                         newcard.querySelector('.desc').innerHTML = details;
-                        // newcard.querySelector('#delete-request').onclick = () => deleteRequest(doc.id);
 
                         let numRepliesEl = newcard.querySelector('.numreplies');
                   
+                        //displays the number of replies.
                         db.collection("replies").where("requestDocID", "==", doc.id)
                           .get()
                           .then(querySnapshot => {
@@ -103,6 +65,7 @@ function showMyPosts(collection) {
                             console.log("Error getting replies: ", error);
                           });
 
+                          // calls time elapsed to display how long ago rquest was made
                           if (doc.data().last_updated != null && doc.data().last_updated != undefined) {
                             var timeEl = newcard.querySelector('.posttime');
                             timeEl.innerHTML = getTimeElapsed(timestamp);
@@ -110,6 +73,8 @@ function showMyPosts(collection) {
 
                           let respondedEl = newcard.querySelector('#responded');
 
+                          // Responded button turns on and off the responded status
+                          // it triggers the UI changes.
                         newcard.querySelector('#responded').addEventListener('click', function() {
                             var requestRef = db.collection('requests').doc(doc.id);
                             requestRef.get().then(function(doc) {
@@ -141,9 +106,8 @@ function showMyPosts(collection) {
                                 console.error("Error getting request document: ", error);
                             });
                         });
-  
 
-                        
+                        //button to delete request.
                         if(owner === firebase.auth().currentUser.uid) {
                             newcard.querySelector('.delete').style.display = 'block';
         
@@ -154,7 +118,7 @@ function showMyPosts(collection) {
                             });
                         }
 
-
+                        //"read more/reply" provides the info to the reply page if clicked.
                         newcard.querySelector('.readreply').addEventListener('click', function() {
                             var ID = doc.id;
                             localStorage.setItem('requestDocID', ID);
@@ -163,10 +127,6 @@ function showMyPosts(collection) {
                         });
 
                         document.getElementById(collection + "-go-here").appendChild(newcard);
-
-
-
-
                     }
                 })
             })
@@ -180,6 +140,7 @@ function showMyPosts(collection) {
 
 showMyPosts("requests");
 
+//function to delete request.
 function deleteRequest(requestid) {
         var result = confirm("Want to delete?");
         if (result) {
@@ -190,16 +151,16 @@ function deleteRequest(requestid) {
                 console.log("1. Document deleted from Requests collection");
                 setTimeout(() => {
                     location.reload();
-                }, 1000); // Reload after 1 second (1000 milliseconds)
+                }, 1000); // Reload after 1 second (it was not working when loading withou delay)
             }).catch((error) => {
                 console.error("Error removing document: ", error);
             });
         }
-    // deleteDoc(doc(db, "requests", DocID))
     ;
 
 }
 
+//function to bring the how long ago post was made.
 function getTimeElapsed(timestamp) {
     var now = Date.now();
     var diff = now - timestamp.toMillis();

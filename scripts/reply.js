@@ -1,8 +1,8 @@
 
 var requestDocID = localStorage.getItem("requestDocID");    //visible to all functions on this page
 
-console.log(requestDocID);
 
+//displays the request details after getting them.
 function displayRequestDetails(requestName, urgency, paid, location, description, amount, responded) {
   
   document.getElementById("requestName").innerHTML = requestName + (responded ? " - RESPONDED" : "");
@@ -21,7 +21,7 @@ function displayRequestDetails(requestName, urgency, paid, location, description
 
 
 
-
+//Gets the request details from previous page and then calls display requests..
 function getRequestDetails(id) {
     db.collection("requests")
       .doc(id)
@@ -40,14 +40,14 @@ function getRequestDetails(id) {
           });
 }
 
+
 getRequestDetails(requestDocID);
 
+//Populates the replies.
 function populateReplies() {
   let replyTemplate = document.getElementById("replyTemplate");
   let repliesGroup = document.getElementById("replies-go-here");
 
-  //let params = new URL(window.location.href) //get the url from the searbar
-  //let hikeID = params.searchParams.get("docID");
   var requestID = localStorage.getItem("requestDocID");
   
   db.collection("replies").where( "requestDocID", "==", requestID).get()
@@ -67,19 +67,23 @@ function populateReplies() {
               console.log(time)
 
               let replyCard = replyTemplate.content.cloneNode(true);
-              replyCard.querySelector('#type').innerHTML = respond;     //equiv getElementByClassName
-              replyCard.querySelector('#user').innerHTML = displayname;     //equiv getElementByClassName
+              
+              
+              replyCard.querySelector('#type').innerHTML = respond;
+
+              
+              replyCard.querySelector('#user').innerHTML = displayname;    
               if (days > 0) {
                 // If the reply was posted more than 24 hours ago, display the number of days
                 replyCard.querySelector('#time').innerHTML = ' - ' + days + ' day' + (days > 1 ? 's' : '') + ' ago';
               } else {
-                // Otherwise, display the number of hours
+                // Otherwise display the number of hours
                 replyCard.querySelector('#time').innerHTML = ' - ' + hours + ' hour' + (hours > 1 ? 's' : '') + ' ago';
               }  
               replyCard.querySelector('#reply-detail').innerHTML = details;
 
 
-              
+              //Shows the delete button only if the owner of the reply is logged in
               if(owner === firebase.auth().currentUser.uid) {
                 replyCard.querySelector('.delete').style.display = 'block';
                 console.log(owner);
@@ -104,7 +108,7 @@ populateReplies();
 
 
 
-
+// Gets the information from the reply into firebase.
 function writeReply() {
   console.log("inside reply")
   let Respond = document.querySelector('input[name="Res-cla"]:checked').value;
@@ -139,7 +143,7 @@ function writeReply() {
 }
 
 
-
+// function to delete a reply.
 function deleteReply(replyid) {
   var result = confirm("Want to delete?");
   if (result) {
@@ -156,7 +160,6 @@ function deleteReply(replyid) {
           console.error("Error removing document: ", error);
       });
   }
-// deleteDoc(doc(db, "requests", DocID))
 ;
 
 }

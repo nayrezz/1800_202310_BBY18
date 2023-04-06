@@ -1,6 +1,5 @@
-//------------------------------------------------------------------------------
-// Input parameter is a string representing the collection we are reading from
-//------------------------------------------------------------------------------
+
+// Display the requests.
 function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("requestCardTemplate");
 
@@ -10,10 +9,9 @@ function displayCardsDynamically(collection) {
         .orderBy("responded")
         .get()   //the collection called "requests"
         .then(allRequests=> {
-            //var i = 1;  //Optional: if you want to have a unique ID for each hike
             allRequests.forEach(doc => { //iterate thru each doc
-                var title = doc.data().subject;       // get value of the "name" key
-                var details = doc.data().description;  // get value of the "details" key
+                var title = doc.data().subject;       
+                var details = doc.data().description;  
                 var paid = doc.data().paid;
                 var amount = doc.data().amount;
                 var urgent = doc.data().urgent;
@@ -25,14 +23,16 @@ function displayCardsDynamically(collection) {
                 let newcard = cardTemplate.content.cloneNode(true);
 
                 
-
+                //shows urgent only if urgent.
                 if(urgent){
                     newcard.querySelector('.urgent-title').innerHTML = "Urgent";
                     newcard.querySelector('#urgent-display').style.display = "block"
                 } 
                 
+                //display responded only if responded.
                 newcard.querySelector('.subject').innerHTML = title + (doc.data().responded ? " - RESPONDED" : "");
 
+                //shows the amount only if paid and with 2 decimals.
                 if(paid) {
                     const amountString = "$ " + Number(amount).toFixed(2)
                     newcard.querySelector('.value').innerHTML = amountString;
@@ -40,6 +40,7 @@ function displayCardsDynamically(collection) {
                     newcard.querySelector('.value').innerHTML = "Free";
                 }
                 
+                //if responded show post with green background
                 if (doc.data().responded) {
                     newcard.querySelector('.card').style.backgroundColor = "#B4D9BA";
                 }
@@ -59,18 +60,11 @@ function displayCardsDynamically(collection) {
                     timeEl.innerHTML = getTimeElapsed(timestamp);
                   }
 
-                // db.collection("replies").where("requestDocID", "==", doc.id)
-                //     .get()
-                //     .then(querySnapshot => {
-                //         const numReplies = querySnapshot.size;
-                //         newcard.querySelector('.numreplies').innerHTML = numReplies;
-                //     });
-
                 console.log(doc.id);
                 
                     // Fetch and display the number of replies
                     let numRepliesEl = newcard.querySelector('.numreplies');
-                  
+
                     db.collection("replies").where("requestDocID", "==", doc.id)
                       .get()
                       .then(querySnapshot => {
@@ -83,7 +77,7 @@ function displayCardsDynamically(collection) {
                         console.log("Error getting replies: ", error);
                       });
                
-
+                // show delete button if the request belongs to the logged in user.
                 if(owner === firebase.auth().currentUser.uid) {
                     newcard.querySelector('.delete').style.display = 'block';
 
@@ -94,26 +88,23 @@ function displayCardsDynamically(collection) {
                     });
                 }
 
-                //Optional: give unique ids to all elements for future use
-                // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-                // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
-                // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
-
-                //attach to gallery, Example: "hikes-go-here"
+                //attach to gallery,
                 document.getElementById(collection + "-go-here").appendChild(newcard);
 
-                //i++;   //Optional: iterate variable to serve as unique ID
             })
         })
 }
 
-displayCardsDynamically("requests");  //input param is the name of the collection
+displayCardsDynamically("requests");  
 
+//saves id before redirecting to reply.
 function saveRequestDocumentIDAndRedirect(ID){
     localStorage.setItem('requestDocID', ID);
     window.location.href = 'reply.html';
 }
 
+// Deletes posts marked as urgent if the user loads the page and there are
+// urgent posts older than 12h.
 function deleteExpiredPosts() {
     const twelveHoursAgo = Date.now() - 12 * 60 * 60 * 1000;
     
@@ -137,6 +128,7 @@ function deleteExpiredPosts() {
   
   deleteExpiredPosts();
 
+  //function to bring the how long ago post was made.
   function getTimeElapsed(timestamp) {
     var now = Date.now();
     var diff = now - timestamp.toMillis();
@@ -155,6 +147,7 @@ function deleteExpiredPosts() {
     return `${days} days ago`;
 }
 
+//delete request function.
 function deleteRequest(requestid) {
     var result = confirm("Want to delete?");
     if (result) {

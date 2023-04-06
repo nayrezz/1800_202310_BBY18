@@ -1,14 +1,16 @@
+
+//Saves the request details and validates some fields.
 function savePost() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            // Do something for the user here. 
             var desc = document.getElementById("description").value;
             var sub = document.getElementById("subject").value;
             var isPaid = document.getElementById("paid").checked;
             var amount = document.getElementById("amount").value;
             var isUrgent = document.getElementById("urgentCheck").checked;
 
+            // Validation: Check if description, subject and location are filled.
             if (!desc || !sub || !location) {
                 alert("Please fill subject, description and location to post.");
                 return;
@@ -44,6 +46,8 @@ function savePost() {
     });
 }
 
+
+//Fills the location with the preset value.
 let selectedLocation = '';
 function setLocation(location) {
     selectedLocation = location;
@@ -51,7 +55,7 @@ function setLocation(location) {
 
   }
 
-  
+
 const isPaidCheckbox = document.getElementById('paid');
 isPaidCheckbox.addEventListener('change', toggleAmountField);
 
@@ -65,9 +69,10 @@ function toggleAmountField() {
   }
 }
 
+// Function to validate the type of input is allowed for the amount field
 function validateAmountInput(event) {
     const input = event.target.value;
-    const regex = /^\d*\.?\d{0,2}$/; // const regex = /^[0-9]+(\.[0-9]{1,2})?$/; // const regex = /^\d+(\.\d{1,2})?$/; 
+    const regex = /^\d*\.?\d{0,2}$/; 
     if (!regex.test(input)) {
       event.target.value = ""; 
     }
