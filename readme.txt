@@ -94,6 +94,16 @@ It has the following subfolders and files:
     /navOriginal.html           # The navbar before logging in
 
 
-```
+``
 
 
+## Contact 
+* Ryan Zhang - rzhang66@my.bcit.ca 
+* ...
+
+## Acknowledgements 
+* <a href="https://fontawesome.com/">Font Awesome</a>
+* <a href="https://fonts.adobe.com/">Adobe Fonts</a> 
+* <a href="https://fonts.google.com/">Google Fonts</a>
+* <a href="https://stock.adobe.com/images">Adobe Stock Images</a>
+* <a href="https://getbootstrap.com/">Bootstrap</a>
