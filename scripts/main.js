@@ -14,8 +14,7 @@ function insertNameFromFirestore(){
                if (prefName) {
                 userName = prefName;
                 }
-
-
+                
                console.log(userName);
                //$("#name-goes-here").text(userName); //jquery
                document.getElementById("name-goes-here").innerText=userName;
