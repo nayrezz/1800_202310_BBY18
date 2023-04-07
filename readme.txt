@@ -3,12 +3,12 @@
 ## 1. Project Description 
 Our browser based web application allows users to engage with their neighbourhood by posting requests onto our virtual bulletin board, where other community members are free to accept requests.
 
-Users can create requests that are either paid or unpaid, view other active requests, accept requests, comment on requests, and even customise their profile page.
+Users can create requests that are either paid or unpaid, view other active requests, accept requests, comment on requests, and even customize their profile page.
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
 * ...
-* Hello my name is Ryan. I'm excited about this project because I get to learn valuable skills that I probably wouldn't have done on my free time.
+* Hello my name is Ryan. I'm excited about this project because I get to learn valuable skills.
 * ...
 * Hi my name is Kari. I'm excited about the project because we get to work in a team!
 * ...
@@ -21,7 +21,7 @@ List technologies (with version numbers), API's, icons, fonts, images, media or 
 * Firebase 8.0 (BAAS - Backend as a Service)
 * ...
 
-## 4. Complete setup/installion/usage
+## 4. Complete setup/installation/usage
 Here are the steps ...
 * 1. On our landing page, create an account by entering your preferred email address, name, and password.
 * 2. Head over to 'My Profile' to add your phone number, location, and a short bio about yourself. Be sure to click on 'Edit' to modify the fields, and click on the 'Save' button to confirm the changes.
@@ -74,10 +74,10 @@ It has the following subfolders and files:
 
 ├── scripts                     # Folder for scripts
     /authentication.js          # Authenticates and logs in the user.
-    /browseRequest.js           # Used in browserequest.html -> Creates and populates the requests cards and other subordinate functions (delete request, delete old  urgent requests and calculate time elapsed.)
+    /browseRequest.js           # Used in browseRequest.html -> Creates and populates the requests cards and other subordinate functions (delete request, delete old  urgent requests and calculate time elapsed.)
     /firebaseAPI_BlockBuddy.js  # API for firebase.
     /main.js                    # Used in main.html -> inserts name from firestore.
-    /myRequests.js              # Used in myRequests.html -> similar to browserequest, creates and populates cards for the user and subordinate functions (delete requests, calculate time elapsed)
+    /myRequests.js              # Used in myRequests.html -> similar to browseRequest, creates and populates cards for the user and subordinate functions (delete requests, calculate time elapsed)
     /profile.js                 # Used in profile.html -> Populates user info, allows edit of user info, saves user info and a small function to set the location on the dropbox.
     /reply.js                   # Used in reply.html -> Gets and displays the request information, creates cards for replies and populates them, saves the reply information into firestore.
     /request.js                 # Used in request.html -> Saves request information with other validation functions (turns amount field on and off depending on 'paid' being toggled, allows only numbers and decimals for amount)
@@ -86,7 +86,7 @@ It has the following subfolders and files:
 
 ├── styles                      # Folder for styles
     /styles.css                 # CSS purposes
-    /styleRequest.css           # CSS purposes -> for browserequest and my request pages.
+    /styleRequest.css           # CSS purposes -> for browseRequest and my request pages.
 
 ├── text                        # Folder for Navbar & Footer
     /footer.html                # Displays 'about, help, and privacy'
@@ -99,7 +99,8 @@ It has the following subfolders and files:
 
 ## Contact 
 * Ryan Zhang - rzhang66@my.bcit.ca 
-* ...
+* Vitor Guara - 
+* Kari Sturgeon - 
 
 ## Acknowledgements 
 * <a href="https://fontawesome.com/">Font Awesome</a>
