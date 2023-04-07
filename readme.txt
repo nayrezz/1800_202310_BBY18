@@ -73,20 +73,20 @@ It has the following subfolders and files:
     /favicon.ico                # Used in 'index.html' and 'main.html'
 
 ├── scripts                     # Folder for scripts
-    /authentication.js          #
-    /browseRequest.js           #
-    /firebaseAPI_BlockBuddy.js  #
-    /main.js                    #
-    /myRequests.js              #
-    /profile.js                 #
-    /reply.js                   # 
-    /request.js                 # 
-    /script.js                  # 
-    /skeleton.js                # 
+    /authentication.js          # Authenticates and logs in the user.
+    /browseRequest.js           # Used in browserequest.html -> Creates and populates the requests cards and other subordinate functions (delete request, delete old  urgent requests and calculate time elapsed.)
+    /firebaseAPI_BlockBuddy.js  # API for firebase.
+    /main.js                    # Used in main.html -> inserts name from firestore.
+    /myRequests.js              # Used in myRequests.html -> similar to browserequest, creates and populates cards for the user and subordinate functions (delete requests, calculate time elapsed)
+    /profile.js                 # Used in profile.html -> Populates user info, allows edit of user info, saves user info and a small function to set the location on the dropbox.
+    /reply.js                   # Used in reply.html -> Gets and displays the request information, creates cards for replies and populates them, saves the reply information into firestore.
+    /request.js                 # Used in request.html -> Saves request information with other validation functions (turns amount field on and off depending on 'paid' being toggled, allows only numbers and decimals for amount)
+    /script.js                  # Used in most pages -> logout button function and a function to check if the user is logged in, otherwise sends them to index.html.
+    /skeleton.js                # Used in all pages -> Inserts header and footer on the pages.
 
 ├── styles                      # Folder for styles
     /styles.css                 # CSS purposes
-    /styleRequest.css           # CSS purposes
+    /styleRequest.css           # CSS purposes -> for browserequest and my request pages.
 
 ├── text                        # Folder for Navbar & Footer
     /footer.html                # Displays 'about, help, and privacy'

@@ -49,12 +49,15 @@ function displayCardsDynamically(collection) {
                 newcard.querySelector('.user').innerHTML = displayname;
                 newcard.querySelector('.desc').innerHTML = details;
 
+
+                //for read more button.
                 newcard.querySelector('.btn').addEventListener('click', function() {
                     var ID = doc.id;
                     localStorage.setItem('requestDocID', ID);
                     window.location.href = 'reply.html';
                 });
 
+                // fills the time elapsed since post.
                 if (doc.data().last_updated != null && doc.data().last_updated != undefined) {
                     var timeEl = newcard.querySelector('.posttime');
                     timeEl.innerHTML = getTimeElapsed(timestamp);
@@ -164,7 +167,6 @@ function deleteRequest(requestid) {
             console.error("Error removing document: ", error);
         });
     }
-// deleteDoc(doc(db, "requests", DocID))
 ;
 
 }
